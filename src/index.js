@@ -9,15 +9,13 @@ import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga';
 import { logger } from 'redux-logger';
 import App from './App';
+import combineReducer from './Componets/redux/combineReducer';
 
-const initialStore = { worm: [] };
+
+const initialStore = {magic:[]};
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  () => {},
-  initialStore,
-  composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware))
-);
+const store = createStore(combineReducer, initialStore, composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware)));
 
 sagaMiddleware.run(function* () {});
 
