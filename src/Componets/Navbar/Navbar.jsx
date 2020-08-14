@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 1500,
+    width: '100%',
   },
   link: {
     textDecoration: "none",
@@ -30,7 +30,7 @@ export default function SimpleBottomNavigation() {
       showLabels
       className={classes.root}
     >
-      <Link to="/news" className={classes.link}>
+      <Link to="/home" className={classes.link}>
         <ListItem button>
           <ListItemIcon className={classes.link}>Финансы</ListItemIcon>
         </ListItem>
