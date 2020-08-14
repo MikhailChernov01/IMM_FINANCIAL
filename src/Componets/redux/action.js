@@ -1,6 +1,5 @@
-import {THIS_ACTION} from "./actionTypes";
+import { THIS_ACTION } from "./actionTypes";
 
-export const thisAction =(action)=>({
-    type: THIS_ACTION,
-    payload: action
-})
+export const thisAction = () => ({
+  type: THIS_ACTION,
+});

@@ -5,7 +5,7 @@ export const action = (state = {magic: true}, action) =>{
     case THIS_ACTION:
       return {
         ...state,
-        magic: action.payload,
+        magic: !state.magic,
       }
      default:
       return state
