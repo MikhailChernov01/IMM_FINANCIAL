@@ -47,7 +47,7 @@ function App() {
         <Navbar className={classes.root} />
 
         <Switch>
-          <Route path="/news">
+          <Route path="/home">
             <Home />
           </Route>
           <Route path="/entry">
