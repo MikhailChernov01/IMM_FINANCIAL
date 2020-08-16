@@ -10,14 +10,15 @@ import createSagaMiddleware from 'redux-saga';
 import { logger } from 'redux-logger';
 import App from './App';
 import combineReducer from './Componets/redux/combineReducer';
+import rootSaga from './Componets/redux/saga/sagas';
 
 
-const initialStore = {magic:[]};
+const initialStore = {action:{magic:[]},fetch:{news:[],stock:[]}};
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(combineReducer, initialStore, composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware)));
 
-sagaMiddleware.run(function* () {});
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
