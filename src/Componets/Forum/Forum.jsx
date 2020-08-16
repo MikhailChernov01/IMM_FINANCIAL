@@ -1,9 +1,11 @@
 import React from 'react'
+import Cardnews from '../Card/Cardnews'
+
 
 function Forum() {
-  return (
-    <div>Forum</div>
-  )
+  return (<>
+      <Cardnews/>
+  </>)
 }
 
 export default Forum

@@ -57,7 +57,7 @@ export default function SimpleBottomNavigation() {
       </Link>
       <Link to="/pif" className={classes.link}>
         <ListItem button>
-          <ListItemIcon className={classes.link}>Пиф</ListItemIcon>
+          <ListItemIcon className={classes.link}>ПИФ</ListItemIcon>
         </ListItem>
       </Link>
       <Link to="/application" className={classes.link}>

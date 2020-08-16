@@ -6,6 +6,7 @@ import MuiAccordionDetails from "@material-ui/core/AccordionDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { newsAdd } from "../redux/action";
 import {} from "dotenv/config";
+import LineChart from "../Chart/Line";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -112,6 +113,9 @@ function Home() {
                   
                 </>
               )}
+          </Grid>
+          <Grid item xs={12} sm={3}>
+            <LineChart />
           </Grid>
         </Grid>
       </div>
