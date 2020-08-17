@@ -51,15 +51,18 @@ const useStyles = makeStyles((theme) => ({
 export default function Cardnews() {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
-  const [like, setLike] = useState(false);
   const news = useSelector((state) => state.fetch.news[0]);
   const dispatch = useDispatch();
+  const [expandedId, setExpandedId] = useState(-1);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
+  const handleExpandClick = (i) => {
+    setExpandedId(expandedId === i ? -1 : i);
   };
-  const handleLikeClick = () => {
-    setLike(!like);
+  const handleLikeClick = (e, i) => {
+    let { name } = e.target.parentNode;
+    if ((name = i)) {
+      return (e.target.parentNode.style.color = "red");
+    }
   };
   useEffect(() => {
     dispatch(newsAdd());
@@ -94,7 +97,11 @@ export default function Cardnews() {
                   />
                   <CardMedia
                     className={classes.media}
-                    image={elem.urlToImage}
+                    image={
+                      elem.urlToImage
+                        ? elem.urlToImage
+                        : require("./icons8-error-100.png")
+                    }
                     title={elem.title}
                   />
                   <CardContent>
@@ -103,17 +110,21 @@ export default function Cardnews() {
                       color="textSecondary"
                       component="p"
                     >
-                      {elem.description}
+                      {elem.content || elem.description}
                     </Typography>
                   </CardContent>
-                  <CardActions disableSpacing>
-                    <IconButton aria-label="add to favorites">
-                      <FavoriteIcon
-                        onClick={handleLikeClick}
-                        className={clsx(classes.noRed, {
-                          [classes.red]: like,
-                        })}
-                      />
+                  <CardActions
+                    disableSpacing
+                    name={i}
+                    style={{ color: "grey" }}
+                  >
+                    <IconButton
+                      aria-label="add to favorites"
+                      name={i}
+                      onClick={(e) => handleLikeClick(e, i)}
+                      style={{ color: "grey" }}
+                    >
+                      <FavoriteIcon name={i} style={{ color: "grey" }} />
                     </IconButton>
                     <IconButton
                       aria-label="share"
@@ -127,17 +138,19 @@ export default function Cardnews() {
                       className={clsx(classes.expand, {
                         [classes.expandOpen]: expanded,
                       })}
-                      onClick={handleExpandClick}
-                      aria-expanded={expanded}
+                      onClick={() => handleExpandClick(i)}
+                      aria-expanded={expandedId === i}
                       aria-label="show more"
                     >
                       <ExpandMoreIcon />
                     </IconButton>
                   </CardActions>
-                  <Collapse in={expanded} timeout="auto" unmountOnExit>
+                  <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                     <CardContent>
                       <Typography paragraph>Short</Typography>
-                      <Typography paragraph>{elem.content}</Typography>
+                      <Typography paragraph>
+                        {elem.content || elem.description}
+                      </Typography>
                       <Typography paragraph>All post</Typography>
                       <Typography paragraph>
                         <Link href={elem.url}>{elem.url}</Link>
