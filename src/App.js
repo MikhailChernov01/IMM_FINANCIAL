@@ -1,5 +1,3 @@
-
-
 import React from "react";
 import Home from "./Componets/Home/Home";
 import SignIn from "./Componets/SignIn/SignIn";
@@ -18,6 +16,7 @@ import Application from "./Componets/Application/Application";
 import Strategy from "./Componets/Strategy/Strategy";
 import Crisis from "./Componets/Crisis/Crisis";
 import { AuthProvider } from './Auth';
+import Main from "./Componets/Main/Main";
 
 const useStyles = makeStyles((theme) => ({
   // paper: {
@@ -85,6 +84,9 @@ function App() {
           </Route>
           <Route path="/crisis">
             <Crisis />
+          </Route>
+          <Route path="/">
+            <Main />
           </Route>
         </Switch>
       </Grid>

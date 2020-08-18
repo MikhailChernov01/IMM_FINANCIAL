@@ -6,7 +6,6 @@ export const thisAction = () => ({
 
 export const newsAdd = () => {
   return async (dispatch) => {
-    console.log(process.env);
     const resp = await fetch(
       `https://newsapi.org/v2/top-headlines?category=business&country=us&apiKey=${process.env.REACT_APP_NEWS_KEY}`
     );
@@ -64,7 +63,7 @@ export const addCurrency = () => {
   };
 };
 
-//rub-usd in line
+//rub-eur in line
 export const addEuro = () => {
   return async (dispatch) => {  
 
