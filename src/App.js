@@ -1,14 +1,17 @@
+
+
 import React from "react";
 import Home from "./Componets/Home/Home";
 import SignIn from "./Componets/SignIn/SignIn";
 import SignUp from "./Componets/SignUp/SignUp";
 import { useSelector } from "react-redux";
 import { makeStyles} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Navbar from "./Componets/Navbar/Navbar";
 import { Switch, Route } from "react-router-dom";
 import World from "./Componets/World/World";
-import Currency from './Componets/Currency/Currency'
+import Currency from "./Componets/Currency/Currency";
 import Club from "./Componets/Club/Club";
 import Forum from "./Componets/Forum/Forum";
 import Pif from "./Componets/Pif/Pif";
@@ -38,6 +41,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 function App() {
   const magic = useSelector((state) => state.action.magic);
   const classes = useStyles();
@@ -59,7 +64,7 @@ function App() {
             <SignUp />
           </Route>
           <Route path="/world">
-            <World/>
+            <World />
           </Route>
           <Route path="/currency">
             <Currency />
@@ -68,7 +73,7 @@ function App() {
             <Club />
           </Route>
           <Route path="/forum">
-            <Forum/>
+            <Forum />
           </Route>
           <Route path="/pif">
             <Pif />
@@ -81,7 +86,7 @@ function App() {
           </Route>
           <Route path="/crisis">
             <Crisis />
-            </Route>
+          </Route>
         </Switch>
       </Grid>
     </AuthProvider>
