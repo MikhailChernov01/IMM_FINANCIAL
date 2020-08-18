@@ -6,6 +6,7 @@ import { AuthContext } from '../../Auth';
 function BackVideo() {
   const { currentUser } = useContext(AuthContext);
 
+  console.log(currentUser);
   
 
   return (
