@@ -2,9 +2,7 @@ import React from "react";
 import Home from "./Componets/Home/Home";
 import SignIn from "./Componets/SignIn/SignIn";
 import SignUp from "./Componets/SignUp/SignUp";
-
 import { useSelector } from "react-redux";
-
 import { makeStyles} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Navbar from "./Componets/Navbar/Navbar";
@@ -17,6 +15,7 @@ import Pif from "./Componets/Pif/Pif";
 import Application from "./Componets/Application/Application";
 import Strategy from "./Componets/Strategy/Strategy";
 import Crisis from "./Componets/Crisis/Crisis";
+import { AuthProvider } from './Auth';
 
 const useStyles = makeStyles((theme) => ({
   // paper: {
@@ -44,6 +43,8 @@ function App() {
   const classes = useStyles();
   return (
     <>
+    <AuthProvider>
+
       <Grid className={magic ? classes.root : classes.magic}>
         <Navbar className={classes.root} />
 
@@ -83,6 +84,7 @@ function App() {
             </Route>
         </Switch>
       </Grid>
+    </AuthProvider>
     </>
   );
 }
