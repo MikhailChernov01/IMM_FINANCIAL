@@ -1,10 +1,8 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -14,17 +12,16 @@ import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import '../SignIn/SignIn.css';
 import Test from '../SignIn/Test';
-// import { useHistory } from 'react-router-dom';
-import { withRouter, Redirect } from 'react-router';
+import { withRouter } from 'react-router';
 import app from '../../firebase/firebase';
-import { AuthContext } from '../../Auth';
+
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://elbrusboot.camp/">
+        Elbrus
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -52,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const history = useHistory();
 
 const SignIn = ({ history }) => {
   const [email, getEmail] = useState('');
@@ -61,7 +57,7 @@ const SignIn = ({ history }) => {
   const handleLogIn = useCallback(
     async (event) => {
       event.preventDefault();
-      // const { email, password } = event.target.elements;
+      
       try {
         await app.auth().signInWithEmailAndPassword(email, password);
         history.push('/');
@@ -71,15 +67,7 @@ const SignIn = ({ history }) => {
     },
     [history, email, password]
   );
-  const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
-
-  console.log(password, email);
-
-  // if (currentUser) {
-  //   return <Redirect to="/" />;
-  // }
-
+ 
   return (
     <>
       <Container component="main" maxWidth="xs">
@@ -125,10 +113,7 @@ const SignIn = ({ history }) => {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+
             <Button
               type="submit"
               fullWidth
@@ -139,16 +124,8 @@ const SignIn = ({ history }) => {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link to="/registration" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
-              </Grid>
+              <Grid item xs></Grid>
+              <Grid item></Grid>
             </Grid>
           </form>
         </div>

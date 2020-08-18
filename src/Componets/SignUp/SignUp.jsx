@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -13,13 +11,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import { useInputs } from './useInputs';
+import { withRouter } from 'react-router';
+import app from '../../firebase/firebase';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="https://elbrusboot.camp/">
+        Elbrus
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -47,28 +47,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
-  const [input, getInformation] = useInputs({ firstName: "", lastName: "", email: "", password:""});
+const SignUp = ({ history }) => {
+  const [input, getInformation] = useInputs({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
   const classes = useStyles();
-  const {firstName, lastName,email,password} = input;
-
-  const submit = async (e) => {
-    e.preventDefault();
-    let response = await fetch('/#', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      }),
-    });
-    const result = await response.json();
-    console.log(result);
-  };
+  const { email, password } = input;
+  const handleSignUp = useCallback(
+    async (event) => {
+      event.preventDefault();
+      // const { email, password } = event.target.elements;
+      try {
+        await app.auth().createUserWithEmailAndPassword(email, password);
+        history.push('/');
+      } catch (error) {
+        alert(error);
+      }
+    },
+    [history, email, password]
+  );
 
   return (
     <Container component="main" maxWidth="xs">
@@ -82,38 +82,11 @@ export default function SignUp() {
         </Typography>
         <form
           className={classes.form}
-          onSubmit={submit}
+          onSubmit={handleSignUp}
           noValidate
           method="POST"
         >
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                onChange={getInformation}
-                value={input.firstName}
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                onChange={getInformation}
-                value={input.lastName}
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
             <Grid item xs={12}>
               <TextField
                 onChange={getInformation}
@@ -141,12 +114,7 @@ export default function SignUp() {
                 autoComplete="current-password"
               />
             </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid>
+            <Grid item xs={12}></Grid>
           </Grid>
           <Button
             type="submit"
@@ -158,11 +126,7 @@ export default function SignUp() {
             Sign Up
           </Button>
           <Grid container justify="flex-end">
-            <Grid item>
-              <Link to="/home" variant="body2">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
+            <Grid item></Grid>
           </Grid>
         </form>
       </div>
@@ -171,4 +135,6 @@ export default function SignUp() {
       </Box>
     </Container>
   );
-}
+};
+
+export default withRouter(SignUp);
