@@ -11,7 +11,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link } from 'react-router-dom';
 import '../SignIn/SignIn.css';
-import Test from '../SignIn/Test';
 import { withRouter } from 'react-router';
 import app from '../../firebase/firebase';
 
@@ -77,7 +76,7 @@ const SignIn = ({ history }) => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In
           </Typography>
           <form
             className={classes.form}
@@ -133,7 +132,6 @@ const SignIn = ({ history }) => {
           <Copyright />
         </Box>
       </Container>
-      <Test />
     </>
   );
 };

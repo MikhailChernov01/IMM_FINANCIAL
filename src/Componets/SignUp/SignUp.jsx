@@ -1,4 +1,5 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext } from 'react';
+import { AuthContext } from '../../Auth';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,6 +14,7 @@ import { Link } from 'react-router-dom';
 import { useInputs } from './useInputs';
 import { withRouter } from 'react-router';
 import app from '../../firebase/firebase';
+import { firestore } from 'firebase';
 
 function Copyright() {
   return (
@@ -47,7 +49,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// const database = app.database()
+// console.log(database);
+
+
+
 const SignUp = ({ history }) => {
+  const { currentUser } = useContext(AuthContext);
   const [input, getInformation] = useInputs({
     firstName: '',
     lastName: '',
@@ -55,13 +63,23 @@ const SignUp = ({ history }) => {
     password: '',
   });
   const classes = useStyles();
-  const { email, password } = input;
+  const { email, password, firstName, lastName } = input;
   const handleSignUp = useCallback(
     async (event) => {
+      const db = firestore()
       event.preventDefault();
-      // const { email, password } = event.target.elements;
       try {
         await app.auth().createUserWithEmailAndPassword(email, password);
+        const current = app.auth().currentUser
+        const nameInfo = `${firstName} ${lastName}`;
+        current.updateProfile({
+          displayName: nameInfo,
+       })
+       db.collection('Users').add({
+         firstName:firstName,
+         lastName:lastName,
+         created: new Date(),
+       })
         history.push('/');
       } catch (error) {
         alert(error);
@@ -87,6 +105,33 @@ const SignUp = ({ history }) => {
           method="POST"
         >
           <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                onChange={getInformation}
+                value={input.firstName}
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                onChange={getInformation}
+                value={input.lastName}
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+              />
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 onChange={getInformation}
