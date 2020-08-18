@@ -1,12 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import '../VideoMain/VideoMain.css';
 import BackgroundVideo from '../VideoMain/videoMain.mp4';
-import { AuthContext } from '../../Auth';
+
 
 function VideoMain() {
-  const { currentUser } = useContext(AuthContext);
-
-  console.log(currentUser);
+ 
 
   return (
     <>
