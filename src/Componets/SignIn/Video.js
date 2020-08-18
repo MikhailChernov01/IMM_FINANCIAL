@@ -7,6 +7,7 @@ function BackVideo() {
   const { currentUser } = useContext(AuthContext);
 
   
+
   return (
     <>
       <div className="video-bg">
@@ -15,7 +16,10 @@ function BackVideo() {
         </video>
         <div className="effects"></div>
         <div className="video-bg__content">
-          <h1>You can start to work</h1>
+          <h1>
+            You can start to work
+            <br /> {currentUser.displayName}
+          </h1>
         </div>
       </div>
     </>
