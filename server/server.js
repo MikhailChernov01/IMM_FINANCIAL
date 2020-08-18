@@ -43,31 +43,42 @@ app.use(methodOverride((req, res) => {
 
 app.use('/', indexRouter)
 
-const users={}
+// let chat =[]
 
-io.on("connection", client =>{
-  client.on('username', username=>{
-    const user={
-      name:username,
+// io.on('connection', socket =>{
+//   let id = Math.random()
+//   socket.emit('id', {id})
+//   socket.on('send', info=>{
+//     chat.push({name:id, message:info.data})
+//   })
+// })
+
+const users = {};
+io.on("connection", client => {
+  client.on("username", username => {
+    const user = {
+      name: username,
       id: client.id
     };
-    io.emit('connected', user)
-    io.emit('user', Object.values(users))
-  })
-  client.on('send', message=>{
-    io.emit('message', {
-      text:message,
+    users[client.id] = user;
+    io.emit("connected", user);
+    io.emit("users", Object.values(users));
+  });
+
+  client.on("send", message => {
+    io.emit("message", {
+      text: message,
       date: new Date().toISOString(),
       user: users[client.id]
-    })
-  })
-  client.on('disconnect', ()=>{
-    const username = users[client.id]
-    delete users[client.id]
-    io.emit('disconnect', client.id)
-  })
-})
+    });
+  });
 
+  client.on("disconnect", () => {
+    const username = users[client.id];
+    delete users[client.id];
+    io.emit("disconnected", client.id);
+  });
+});
 
 async function start() {
   try {
