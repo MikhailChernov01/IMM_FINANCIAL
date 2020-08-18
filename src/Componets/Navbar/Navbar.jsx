@@ -23,6 +23,7 @@ export default function SimpleBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
+   
 
   if (currentUser) {
     return (
@@ -36,12 +37,12 @@ export default function SimpleBottomNavigation() {
       >
         <Link to="/home" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Финансы</ListItemIcon>
+            <ListItemIcon className={classes.link}>Finance</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/world" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Мировые рынки</ListItemIcon>
+            <ListItemIcon className={classes.link}>Global market</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/club" className={classes.link}>
@@ -51,27 +52,27 @@ export default function SimpleBottomNavigation() {
         </Link>
         <Link to="/forum" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Форум</ListItemIcon>
+            <ListItemIcon className={classes.link}>Forum</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/pif" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>ПИФ</ListItemIcon>
+            <ListItemIcon className={classes.link}>Pif</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/application" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Приложения</ListItemIcon>
+            <ListItemIcon className={classes.link}>Apps</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/strategy" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Cтратегии</ListItemIcon>
+            <ListItemIcon className={classes.link}>Strategies</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/crisis" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Кризис 2020</ListItemIcon>
+            <ListItemIcon className={classes.link}>Crisis 2020</ListItemIcon>
           </ListItem>
         </Link>
         <Link
@@ -82,12 +83,12 @@ export default function SimpleBottomNavigation() {
           }}
         >
           <ListItem button>
-            <ListItemIcon className={classes.link}>Магия</ListItemIcon>
+            <ListItemIcon className={classes.link}>Magic</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/" className={classes.link}>
           <ListItem button onClick={() => app.auth().signOut()}>
-            <ListItemIcon className={classes.link}>Выход</ListItemIcon>
+            <ListItemIcon className={classes.link}>Log Out</ListItemIcon>
           </ListItem>
         </Link>
       </BottomNavigation>
@@ -104,32 +105,32 @@ export default function SimpleBottomNavigation() {
       >
         <Link to="/home" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Финансы</ListItemIcon>
+            <ListItemIcon className={classes.link}>Finance</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/world" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Мировые рынки</ListItemIcon>
+            <ListItemIcon className={classes.link}>Global market</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/currency" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Валютные рынки</ListItemIcon>
+            <ListItemIcon className={classes.link}>Forien exchange market</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/forum" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Форум</ListItemIcon>
+            <ListItemIcon className={classes.link}>Forum</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/pif" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>ПИФ</ListItemIcon>
+            <ListItemIcon className={classes.link}>Pif</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/crisis" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Кризис 2020</ListItemIcon>
+            <ListItemIcon className={classes.link}>Crisis 2020</ListItemIcon>
           </ListItem>
         </Link>
         <Link
@@ -140,17 +141,17 @@ export default function SimpleBottomNavigation() {
           }}
         >
           <ListItem button>
-            <ListItemIcon className={classes.link}>Магия</ListItemIcon>
+            <ListItemIcon className={classes.link}>Magic</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/entry" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Вход</ListItemIcon>
+            <ListItemIcon className={classes.link}>Sign In</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/registration" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Регистрация</ListItemIcon>
+            <ListItemIcon className={classes.link}>Sign Up</ListItemIcon>
           </ListItem>
         </Link>
       </BottomNavigation>
