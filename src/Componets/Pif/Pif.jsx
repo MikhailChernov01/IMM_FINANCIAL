@@ -1,9 +1,10 @@
 import React from 'react'
+import Client from '../Client/Client'
 
 function Pif() {
-  return (
-    <div>PIF</div>
-  )
+  return (<>
+    <Client/>
+  </>)
 }
 
 export default Pif
