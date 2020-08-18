@@ -6,7 +6,6 @@ import SignIn from "./Componets/SignIn/SignIn";
 import SignUp from "./Componets/SignUp/SignUp";
 import { useSelector } from "react-redux";
 import { makeStyles} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Navbar from "./Componets/Navbar/Navbar";
 import { Switch, Route } from "react-router-dom";

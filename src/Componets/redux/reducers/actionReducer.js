@@ -7,7 +7,7 @@ export const action = (state = {magic: true}, action) =>{
         ...state,
         magic: !state.magic,
       }
-      //table usa(world) stocks
+      
       
     
      default:
