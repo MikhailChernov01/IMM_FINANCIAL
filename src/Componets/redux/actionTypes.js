@@ -10,8 +10,6 @@ export const STOCK_TABLE_ADD = 'STOCK_TABLE_ADD'
 export const FX_ADD_USD = 'FX_ADD_USD'
 //rub-euro line chart
 export const FX_ADD_EUR = 'FX_ADD_EUR'
-=======
-
 
 //server
 export const ADD_ACCOUNT ='ADD_ACCOUNT'
