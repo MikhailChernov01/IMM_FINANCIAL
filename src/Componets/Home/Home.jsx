@@ -110,8 +110,7 @@ function Home() {
                       <Typography className={classes.news} key={i}>{elem.content}</Typography>
                     </AccordionDetails>
                   </Accordion>
-                  
-                </>
+                  </>
               )}
           </Grid>
           <Grid item xs={12} sm={3}>

@@ -1,6 +1,6 @@
-import { NEWS_ADD, STOCK_ADD } from "../actionTypes";
+import { NEWS_ADD, STOCK_ADD, STOCK_TABLE_ADD } from "../actionTypes";
 
-export const fetch = (state = { news: [], stock:[] }, action) => {
+export const fetch = (state = { news: [], stock: [] }, action) => {
   switch (action.type) {
     case NEWS_ADD:
       return {
@@ -11,6 +11,11 @@ export const fetch = (state = { news: [], stock:[] }, action) => {
       return {
         ...state,
         stock: [action.payload],
+      };
+    case STOCK_TABLE_ADD:
+      return {
+        ...state,
+        stock: [...state.stock, action.payload],
       };
     default:
       return state;

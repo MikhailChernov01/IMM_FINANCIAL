@@ -3,8 +3,7 @@ import { stockAdd } from "../action";
 import { STOCK_START } from "../actionTypes";
 
 const fetchOnStock = async (symbol) => {
-  console.log(symbol
-    );
+  console.log(process.env);
   const response = await fetch(
     `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${symbol}&apikey=${process.env.REACT_APP_ALPHA_KEY_TWO}`
   );
