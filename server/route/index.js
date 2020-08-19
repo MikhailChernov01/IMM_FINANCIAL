@@ -17,8 +17,16 @@ router
       owner: user,
     });
     res.json(account);
-  });
-router
+  })
+  .delete(async (req, res) => {
+    const { id } = req.body;
+    await Account.findOneAndDelete({title: id})
+    // const result = await Account.find({})
+    // res.json('200')
+    
+  })
+
+  router
   .route('/show')
   .get(async(req,res)=>{
     const all = await Account.find({})
