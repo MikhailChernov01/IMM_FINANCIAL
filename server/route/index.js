@@ -20,16 +20,28 @@ router
   })
   .delete(async (req, res) => {
     const { id } = req.body;
-    await Account.findOneAndDelete({title: id})
-    // const result = await Account.find({})
-    // res.json('200')
-    
-  })
+    await Account.findOneAndDelete({ title: id });
+    const result = await Account.find({});
+    console.log(result);
+    res.json(result);
+  });
 
-  router
-  .route('/show')
-  .get(async(req,res)=>{
-    const all = await Account.find({})
-    res.json(all)
+router
+  .route("/show")
+  .get(async (req, res) => {
+    const all = await Account.find({});
+    res.json(all);
   })
+  .put(async (req, res) => {
+    const { id } = req.body;
+    const det = await Account.findOneAndUpdate(
+      { title: id },
+      {
+        title: faker.finance.account(),
+      },
+      { new: false }
+    );
+    const result = await Account.find({});
+    res.json(result);
+  });
 export default router;

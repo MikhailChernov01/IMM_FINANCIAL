@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
-import { accountAdd, accountShow } from "../redux/actionLocal";
+import { accountAdd, accountShow, accountDelete } from "../redux/actionLocal";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import Account from "./Account";
@@ -68,7 +68,7 @@ export default function Club() {
           </CardContent>
           <CardActions className={classes.root}>
             <Button onClick={() => dispatch(accountAdd())}>Open</Button>
-            <Button onClick={() => alert("No work")}>More</Button>
+           <a href="https://money.yandex.ru/start"><Button >More</Button></a> 
           </CardActions>
         </Card>
       </Grid>
@@ -82,7 +82,7 @@ export default function Club() {
         {account &&
           account.map((e, i) => (
             <>
-              <Link to={`/club/${e.title}`} className={classes.link} key={i}>
+              <Link to={`/club/${e.title}`} className={classes.link} key={i} >
                 <Typography>{e.title}</Typography>
               </Link>
             </>
@@ -90,7 +90,7 @@ export default function Club() {
       </Grid>
       <Grid container spacing={3} justify="center">
         <Switch>
-          <Route path="/club/:id" children={<Account />}></Route>
+          <Route path="/club/:id" ><Account /></Route>
         </Switch>
       </Grid>
     </Grid>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 
@@ -10,7 +10,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { useDispatch } from "react-redux";
-import { accountDelete } from "../redux/actionLocal";
+import { accountDelete, accountEdit, accountShow } from "../redux/actionLocal";
 
 
 const useStyles = makeStyles({
@@ -45,6 +45,7 @@ const Rotate = styled.div`
   animation: ${rotate} 5s linear infinite;
   padding: 2rem 1rem;
   font-size: 1.2rem;
+  text-shadow: 2px 0 0px #800040, 3px 2px 0px rgba(77,0,38,0.5), 3px 0 3px #FF002B, 5px 0 3px #800015, 6px 2px 3px rgba(77,0,13,0.5), 6px 0 9px #FF5500, 8px 0 9px #802A00, 9px 2px 9px rgba(77,25,0,0.5), 9px 0 18px #FFD500, 11px 0 18px #806A00, 12px 2px 18px rgba(77,66,0,0.5), 12px 0 30px #D4FF00, 14px 0 30px #6A8000, 15px 2px 30px rgba(64,77,0,0.5), 15px 0 45px #80FF00, 17px 0 45px #408000, 2px 2px 2px rgba(206,89,55,0);
 `;
 
 const ReversedButton = (props) => (
@@ -58,6 +59,7 @@ const Action = styled.div`
 `;
 
 function Account() {
+
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(true);
@@ -75,13 +77,18 @@ function Account() {
   const toggleVisible = () => {
     setVisible((state) => (state = !state));
   };
+
+  useEffect(() => {
+    dispatch(accountShow());
+  }, [dispatch]);
+  
   return (
     <>
       <Rotate>Account {id}</Rotate>
 
       <Action>
-        <Button>Edit</Button>
-        <Button as={ReversedButton} onClick={dispatch(accountDelete(id))}>Delete</Button>
+        <Button onClick={(e)=>{e.stopPropagation();dispatch(accountEdit(id))}}>Edit</Button>
+        <Button as={ReversedButton} onClick={(e)=>{e.stopPropagation();dispatch(accountDelete(id))}}>Delete</Button>
         <Button onClick= {() => {handleClickOpen()}}>Buy</Button>
       </Action>
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
