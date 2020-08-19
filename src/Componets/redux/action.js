@@ -32,7 +32,7 @@ export const stockAdd = (data) => {
 export const addStockTable = () => {
   return async (dispatch) => {
 
-   const stockSymbols = ["GOOG", "AAPL", "COKE", "XOM", "GE"]
+   const stockSymbols = ["GOOG", "AAPL", "COKE", "XOM"]
    await stockSymbols.forEach(async(elem)=>{
 
      const resp = await fetch(
@@ -53,7 +53,7 @@ export const addCurrency = () => {
   return async (dispatch) => {  
 
      const resp = await fetch(
-      `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=USD&to_symbol=RUB&apikey=${process.env.REACT_APP_ALPHA_KEY_TWO}`
+      `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=USD&to_symbol=RUB&apikey=${process.env.REACT_APP_ALPHA_KEY_FOUR}`
      );
      const r = await resp.json();
      dispatch({

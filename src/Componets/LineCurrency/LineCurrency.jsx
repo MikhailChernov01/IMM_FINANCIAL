@@ -31,7 +31,7 @@ export default function LineChart() {
   }, [dispatch]);
 
   let currentValue ="";
-  // let lastOpenValue = "";
+  let lastOpenValue = "";
 let data={}
 if (currency) {
   let tempCurrency = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
@@ -41,12 +41,12 @@ if (currency) {
   }).reverse();
   currentValue = parseFloat(tempCurrency.pop())
 
-  // let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
-  //   if (el) {
-  //     return el["1. open"];
-  //   }
-  // }).reverse();
-  // lastOpenValue = parseFloat(tempDataInd.pop());
+  let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
+    if (el) {
+      return el["1. open"];
+    }
+  }).reverse();
+  lastOpenValue = parseFloat(tempDataInd.pop());
       data = {
       labels: Object.keys(currency["Time Series FX (Daily)"]).reverse(),
       datasets: [
@@ -82,8 +82,8 @@ if (currency) {
       <div>
   <h3 className={classes.percent}>&#36;
   {currentValue}
-  {/* {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} /> 
-  : <ArrowDownwardIcon style={{ color: red[500]}} />} */}
+  {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} /> 
+  : <ArrowDownwardIcon style={{ color: red[500]}} />}
   </h3>
         <Line data={data} />
       </div>
