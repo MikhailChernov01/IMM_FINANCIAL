@@ -5,7 +5,7 @@ import VideoMain from '../VideoMain/VideoMain';
 
 function Main() {
   const { currentUser } = useContext(AuthContext);
-
+// done
   if (currentUser) {
     return (
       <>
