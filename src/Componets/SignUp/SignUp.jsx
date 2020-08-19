@@ -49,9 +49,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const database = app.database()
-// console.log(database);
-
 
 
 const SignUp = ({ history }) => {
@@ -66,20 +63,20 @@ const SignUp = ({ history }) => {
   const { email, password, firstName, lastName } = input;
   const handleSignUp = useCallback(
     async (event) => {
-      const db = firestore()
+      const db = firestore();
       event.preventDefault();
       try {
         await app.auth().createUserWithEmailAndPassword(email, password);
-        const current = app.auth().currentUser
+        const current = app.auth().currentUser;
         const nameInfo = `${firstName} ${lastName}`;
         current.updateProfile({
           displayName: nameInfo,
-       })
-       db.collection('Users').add({
-         firstName:firstName,
-         lastName:lastName,
-         created: new Date(),
-       })
+        });
+        db.collection('Users').add({
+          firstName: firstName,
+          lastName: lastName,
+          created: new Date(),
+        });
         history.push('/');
       } catch (error) {
         alert(error);
