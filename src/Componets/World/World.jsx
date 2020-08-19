@@ -1,25 +1,38 @@
-import React from "react";
+import React, { useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import StocksUsa from '../StocksUsa/StocksUsa';
 import { makeStyles } from '@material-ui/core/styles';
-// import LineCurrency from '../LineCurrency/LineCurrency'
-// import LineChartEuro from '../LineCurrencyEuro/LineCurrencyEuro';
-// import Card from '@material-ui/core/Card';
-// import CardContent from '@material-ui/core/CardContent';
+import LineChartAppl from '../ChartAppl/ChartAppl'
+import { addStockTable } from '../redux/action';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 
 function World() {
-
+ const dispatch =useDispatch()
   const useStyles = makeStyles({
     tables: {
       fontFamily: [
         "Roboto", "Helvetica", "Arial", "sans-serif"
-      ].join(',')
+      ].join(','),
+      display: "flex",
+      flexWrap: "wrap"
     }
 
   });
 
   const classes = useStyles();
+
+  const stocks = useSelector((state) => state.fetch.indicators);
+
+  
+    useEffect(() => {
+      if(!!stocks){
+       dispatch(addStockTable());  
+      }  
+  }, [dispatch]);
+  
+  
 
   return (
     <>
@@ -27,6 +40,11 @@ function World() {
         <Grid item xs={12} sm={4}>
           <StocksUsa />
         </Grid>
+        <Grid className={classes.tables} item xs={12} sm={8} >
+        <LineChartAppl />
+        </Grid>
+
+
       </Grid>
     </>
   );

@@ -1,6 +1,6 @@
 import { NEWS_ADD, STOCK_ADD, STOCK_TABLE_ADD, FX_ADD_USD, FX_ADD_EUR } from "../actionTypes";
 
-export const fetch = (state = { news: [], stock: [] }, action) => {
+export const fetch = (state = { news: [], stock: [], indicators:[], usd:[], euro:[] }, action) => {
   switch (action.type) {
     case NEWS_ADD:
       return {
@@ -15,7 +15,7 @@ export const fetch = (state = { news: [], stock: [] }, action) => {
     case STOCK_TABLE_ADD:
       return {
         ...state,
-        stock: [...state.stock, action.payload],
+        indicators: [...state.indicators, action.payload],
       };
       case FX_ADD_USD:
         return {
