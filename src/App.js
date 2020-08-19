@@ -26,21 +26,22 @@ const useStyles = makeStyles((theme) => ({
   //   color: "#a0c4ff",
   // },
   root: {
-    maxWidth: "1800px",
-    margin: "auto",
+    minWidth: "auto",
+    
     backgroundColor: "#EEEEEE",
     "& > *": {           
-      
+      margin: 0,
      },
     
   },
   magic: {
-    maxWidth: "1800px",
+    maxWidth: "auto",
     margin: "auto",
     backgroundColor: "#414141",
         
     "& > *": {      
       color: "white",
+      
     },
   },
   
@@ -57,7 +58,7 @@ function App() {
 
       <Grid className={magic ? classes.root : classes.magic}>
         <DollarImage className={classes.image}/>
-        <Navbar className={classes.root} />
+        <Navbar className={magic ? classes.root : classes.magic} />
       <Grid>
         <Switch>
           <Route path="/home">

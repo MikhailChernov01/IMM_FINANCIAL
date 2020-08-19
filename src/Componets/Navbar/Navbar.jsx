@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from "react-redux";
 import { BottomNavigation, ListItem, ListItemIcon } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { thisAction } from '../redux/action';
@@ -12,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     paddingTop: '15px',
     backgroundColor: '#EEEEEE'
+  },
+  magicNav: {
+    backgroundColor: '#414141'
   },
   
   link: {
@@ -29,18 +33,23 @@ export default function SimpleBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
+  const magic = useSelector((state) => state.action.magic);
+  
    
+
 
   if (currentUser) {
     return (
+      
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
         showLabels
-        className={classes.root}
+        className={magic==false ? classes.root : classes.magicNav}
       >
+        {console.log(magic)}
         <Link to="/home" className={classes.link}>
           <ListItem button>
             <ListItemIcon className={classes.link}>Finance</ListItemIcon>
@@ -107,7 +116,7 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
         showLabels
-        className={classes.root}
+        className={magic ? classes.root : classes.magicNav}
       >
         <Link to="/home" className={classes.link}>
           <ListItem button>

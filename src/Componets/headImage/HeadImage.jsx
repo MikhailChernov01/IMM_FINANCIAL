@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     padding: 0   
   },
   imageDollar:{
-    maxWidth: "1700px"
+    maxWidth: "1600px"
   }
   
 }));
