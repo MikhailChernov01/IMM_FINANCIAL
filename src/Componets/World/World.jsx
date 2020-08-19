@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 
 function World() {
- const dispatch =useDispatch()
+  const dispatch = useDispatch()
   const useStyles = makeStyles({
     tables: {
       fontFamily: [
@@ -24,15 +24,16 @@ function World() {
   const classes = useStyles();
 
   const stocks = useSelector((state) => state.fetch.indicators);
+  
 
-  
-    useEffect(() => {
-      if(!!stocks){
-       dispatch(addStockTable());  
-      }  
+
+  useEffect(() => {
+    if (stocks.length === 0) {
+      dispatch(addStockTable());
+    }
   }, [dispatch]);
-  
-  
+
+console.log(stocks)
 
   return (
     <>
@@ -41,7 +42,7 @@ function World() {
           <StocksUsa />
         </Grid>
         <Grid className={classes.tables} item xs={12} sm={8} >
-        <LineChartAppl />
+          <LineChartAppl />
         </Grid>
 
 

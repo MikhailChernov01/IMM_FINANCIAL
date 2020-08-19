@@ -17,6 +17,7 @@ import Strategy from "./Componets/Strategy/Strategy";
 import Crisis from "./Componets/Crisis/Crisis";
 import { AuthProvider } from './Auth';
 import Main from "./Componets/Main/Main";
+import DollarImage from './Componets/headImage/HeadImage'
 
 const useStyles = makeStyles((theme) => ({
   // paper: {
@@ -25,18 +26,24 @@ const useStyles = makeStyles((theme) => ({
   //   color: "#a0c4ff",
   // },
   root: {
-    "& > *": {
-      margin: theme.spacing(1),
-    },
-    margin: 100,
+    maxWidth: "1800px",
+    margin: "auto",
+    backgroundColor: "#EEEEEE",
+    "& > *": {           
+      
+     },
+    
   },
   magic: {
-    backgroundColor: "black",
-    margin: 100,
-    "& > *": {
-      margin: theme.spacing(1),
+    maxWidth: "1800px",
+    margin: "auto",
+    backgroundColor: "#414141",
+        
+    "& > *": {      
+      color: "white",
     },
   },
+  
 }));
 
 
@@ -49,8 +56,9 @@ function App() {
     <AuthProvider>
 
       <Grid className={magic ? classes.root : classes.magic}>
+        <DollarImage className={classes.image}/>
         <Navbar className={classes.root} />
-
+      <Grid>
         <Switch>
           <Route path="/home">
             <Home />
@@ -89,6 +97,7 @@ function App() {
             <Main />
           </Route>
         </Switch>
+        </Grid>
       </Grid>
     </AuthProvider>
     </>
