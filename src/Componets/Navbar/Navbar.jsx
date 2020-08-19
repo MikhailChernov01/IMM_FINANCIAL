@@ -10,11 +10,17 @@ import app from '../../firebase/firebase';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    paddingTop: '15px',
+    backgroundColor: '#EEEEEE'
   },
+  
   link: {
     textDecoration: 'none',
-    fontFamily: 'serif',
-    color: '#457b9d',
+    fontFamily: [
+      "Roboto", "Helvetica", "Arial", "sans-serif"
+    ].join(','),
+    fontSize: "1.2em",
+    color: '#444444',
   },
 }));
 

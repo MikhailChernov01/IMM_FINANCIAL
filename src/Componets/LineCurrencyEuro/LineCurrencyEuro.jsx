@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Line } from "react-chartjs-2";
-import { useDispatch, useSelector } from "react-redux";
-import { addEuro } from "../redux/action";
+import { useSelector } from "react-redux";
+
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { green, red } from '@material-ui/core/colors';
@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function LineChartEuro() {
 
   const useStyles = makeStyles({
-    
+
     percent: {
       minWidth: 100,
       display: "flex",
@@ -22,39 +22,35 @@ export default function LineChartEuro() {
   });
   const classes = useStyles();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const currency = useSelector((state) => state.fetch.euro[0]);
-   
-    useEffect(() => {
-    dispatch(addEuro());
-  }, [dispatch]);
 
-//variable for current price output
-  let currentValue ="";
+  //variable for current price output
+  let currentValue = "";
 
   //variable for up or down arrow
   let lastOpenValue = "";
-let data={}
+  let data = {}
 
-//check if data come and make an arrow of data
-if (currency) {
-  let tempCurrency = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
-    if (el) {
-      return el["4. close"];
-    }
-  }).reverse();
-  currentValue = parseFloat(tempCurrency.pop())
+  //check if data come and make an arrow of data
+  if (currency) {
+    let tempCurrency = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
+      if (el) {
+        return el["4. close"];
+      }
+    }).reverse();
+    currentValue = parseFloat(tempCurrency.pop())
 
-  //data for up or down arrow
-  let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
-    if (el) {
-      return el["1. open"];
-    }
-  }).reverse();
-  lastOpenValue = parseFloat(tempDataInd.pop());
+    //data for up or down arrow
+    let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
+      if (el) {
+        return el["1. open"];
+      }
+    }).reverse();
+    lastOpenValue = parseFloat(tempDataInd.pop());
 
-  //data for table
-      data = {
+    //data for table
+    data = {
       labels: Object.keys(currency["Time Series FX (Daily)"]).reverse(),
       datasets: [
         {
@@ -85,14 +81,14 @@ if (currency) {
 
   return (
     <>
-      
+
       <div>
-      <h3 className={classes.percent}>&#8364;{currentValue}
-      {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} /> 
-                : <ArrowDownwardIcon style={{ color: red[500]}} />}
-  </h3>
-  
-  
+        <h3 className={classes.percent}>&#8364;{currentValue}
+          {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} />
+            : <ArrowDownwardIcon style={{ color: red[500] }} />}
+        </h3>
+
+
         <Line data={data} />
       </div>
     </>
