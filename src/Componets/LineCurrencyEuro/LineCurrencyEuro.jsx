@@ -29,9 +29,14 @@ export default function LineChartEuro() {
     dispatch(addEuro());
   }, [dispatch]);
 
+//variable for current price output
   let currentValue ="";
-  // let lastOpenValue = "";
+
+  //variable for up or down arrow
+  let lastOpenValue = "";
 let data={}
+
+//check if data come and make an arrow of data
 if (currency) {
   let tempCurrency = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
     if (el) {
@@ -40,13 +45,15 @@ if (currency) {
   }).reverse();
   currentValue = parseFloat(tempCurrency.pop())
 
-  // let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
-  //   if (el) {
-  //     return el["1. open"];
-  //   }
-  // }).reverse();
-  // lastOpenValue = parseFloat(tempDataInd.pop());
+  //data for up or down arrow
+  let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
+    if (el) {
+      return el["1. open"];
+    }
+  }).reverse();
+  lastOpenValue = parseFloat(tempDataInd.pop());
 
+  //data for table
       data = {
       labels: Object.keys(currency["Time Series FX (Daily)"]).reverse(),
       datasets: [
@@ -81,8 +88,8 @@ if (currency) {
       
       <div>
       <h3 className={classes.percent}>&#8364;{currentValue}
-      {/* {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} /> 
-                : <ArrowDownwardIcon style={{ color: red[500]}} />} */}
+      {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} /> 
+                : <ArrowDownwardIcon style={{ color: red[500]}} />}
   </h3>
   
   

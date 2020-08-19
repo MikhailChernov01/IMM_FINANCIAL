@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { addStockTable } from "../redux/action";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+
+import { useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -29,15 +29,10 @@ const useStyles = makeStyles({
   },
 });
 
-
-
 function StocksUsa() {
-  const dispatch = useDispatch();
-  const stocks = useSelector((state) => state.fetch.stock);
-  useEffect(() => {
-    dispatch(addStockTable());
-  }, [dispatch]);
-  console.log(stocks);
+  
+  const stocks = useSelector((state) => state.fetch.indicators);
+
 
 
   const classes = useStyles();
@@ -45,16 +40,16 @@ function StocksUsa() {
   return (
     <>
       <TableContainer component={Paper}>
-        <h2 style={{ margin: 15 }}>Акции США</h2>
+        <h2 style={{ margin: 15 }}>US Stocks</h2>
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell align="left">Акция</TableCell>
-              <TableCell align="right">Цена</TableCell>
+              <TableCell align="left">Ticket</TableCell>
+              <TableCell align="right">Current price</TableCell>
               <TableCell align="right" className={classes.percent} container
                 direction="row"
                 justify="center"
-                alignItems="center">Изменение</TableCell>
+                alignItems="center">Change</TableCell>
 
             </TableRow>
           </TableHead>
@@ -67,15 +62,12 @@ function StocksUsa() {
                   {elem["Meta Data"]["2. Symbol"]}
                 </TableCell>
 
-                <TableCell align="right">{elem["Time Series (Daily)"]["2020-08-17"]["4. close"]}</TableCell>
+                <TableCell align="right">{elem["Time Series (Daily)"]["2020-08-18"]["4. close"]}</TableCell>
 
 
                 <TableCell align="right" className={classes.percent}>
-                  {(parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["1. open"]) - parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["4. close"])).toFixed(2)}%
-
-
-
-                  {( (   parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["1. open"]) - parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["4. close"]) ) > 0) ?
+                  {(parseFloat(elem["Time Series (Daily)"]["2020-08-18"]["1. open"]) - parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["4. close"])).toFixed(2)}%
+                  {((parseFloat(elem["Time Series (Daily)"]["2020-08-18"]["1. open"]) - parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["4. close"])) > 0) ?
                       <ArrowUpward style={{ color: green[500] }}></ArrowUpward> :  <ArrowDownwardIcon style={{ color: red[500] }} />}</TableCell>
               </TableRow>
             ))}
