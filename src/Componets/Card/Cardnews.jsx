@@ -84,11 +84,9 @@ export default function Cardnews() {
                     }
                     action={
                       <IconButton aria-label="settings">
-                        <MoreVertIcon
-                          onClick={() => {
-                            alert("No work");
-                          }}
-                        />
+                        <Link href={elem.url}>
+                          <MoreVertIcon />
+                        </Link>
                       </IconButton>
                     }
                     title={elem.title}

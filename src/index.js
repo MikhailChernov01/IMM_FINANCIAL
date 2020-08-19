@@ -13,7 +13,8 @@ import combineReducer from './Componets/redux/combineReducer';
 import rootSaga from './Componets/redux/saga/sagas';
 
 
-const initialStore = {action:{magic:[]},fetch:{news:[],stock:[]}};
+const initialStore = {action:{magic:[]},fetch:{news:[],stock:[], usd:[], euro:[]}, entry:{accounts:[]}};
+
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(combineReducer, initialStore, composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware)));

@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { addStockTable } from "../redux/action";
-import { useDispatch, useSelector  } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -37,65 +37,53 @@ function StocksUsa() {
   useEffect(() => {
     dispatch(addStockTable());
   }, [dispatch]);
-console.log(stocks);
+  console.log(stocks);
 
 
-const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <>
-    <TableContainer component={Paper}>
-      <h2 style={{ margin: 15 }}>Акции США</h2>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">Акция</TableCell>
-            <TableCell align="right">Цена</TableCell>
-            <TableCell align="right" className={classes.percent} container
-  direction="row"
-  justify="center"
-  alignItems="center">Изменение</TableCell>
-            
-          </TableRow>
-        </TableHead>
-        <TableBody>
+      <TableContainer component={Paper}>
+        <h2 style={{ margin: 15 }}>Акции США</h2>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">Акция</TableCell>
+              <TableCell align="right">Цена</TableCell>
+              <TableCell align="right" className={classes.percent} container
+                direction="row"
+                justify="center"
+                alignItems="center">Изменение</TableCell>
 
-          {stocks.map((elem, i)=> (
-            <TableRow key={i}>
-
-              <TableCell component="th" scope="row">
-                {elem["Global Quote"]["01. symbol"]}
-              </TableCell>
-
-              <TableCell align="right">{elem["Global Quote"]["05. price"]}</TableCell>
-
-              <TableCell align="right" className={classes.percent}>
-                
-                 {
-
-                 (parseFloat(elem["Global Quote"]["09. change"]) > 0)? <p style={{ color: green[500] }}> {parseFloat(elem["Global Quote"]["09. change"]).toFixed(2)}%</p> : <p style={{ color: red[500] }}> {parseFloat(elem["Global Quote"]["09. change"]).toFixed(2)}%</p>
-                 
-                 }&nbsp;{ (parseFloat(elem["Global Quote"]["09. change"]) > 0)? 
-                <ArrowUpward style={{ color: green[500] }} /> 
-                : <ArrowDownwardIcon style={{ color: red[500]}} />}
-
-
-              </TableCell>
-              
-              
-              
-              
-              {/* <TableCell align="right">
-               
-                </TableCell> */}
             </TableRow>
+          </TableHead>
+          <TableBody>
 
-          ))}
+            {stocks.map((elem, i) => (
+              <TableRow key={i}>
+
+                <TableCell component="th" scope="row">
+                  {elem["Meta Data"]["2. Symbol"]}
+                </TableCell>
+
+                <TableCell align="right">{elem["Time Series (Daily)"]["2020-08-17"]["4. close"]}</TableCell>
 
 
-        </TableBody>
-      </Table>
-    </TableContainer>
+                <TableCell align="right" className={classes.percent}>
+                  {(parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["1. open"]) - parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["4. close"])).toFixed(2)}%
+
+
+
+                  {( (   parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["1. open"]) - parseFloat(elem["Time Series (Daily)"]["2020-08-17"]["4. close"]) ) > 0) ?
+                      <ArrowUpward style={{ color: green[500] }}></ArrowUpward> :  <ArrowDownwardIcon style={{ color: red[500] }} />}</TableCell>
+              </TableRow>
+            ))}
+
+
+          </TableBody>
+        </Table>
+      </TableContainer>
     </>
   );
 }

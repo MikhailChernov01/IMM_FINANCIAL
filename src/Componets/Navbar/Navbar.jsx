@@ -47,7 +47,7 @@ export default function SimpleBottomNavigation() {
         </Link>
         <Link to="/club" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Личный кабинет</ListItemIcon>
+            <ListItemIcon className={classes.link}>Private Office</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/forum" className={classes.link}>

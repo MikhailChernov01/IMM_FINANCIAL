@@ -43,16 +43,6 @@ app.use(methodOverride((req, res) => {
 
 app.use('/', indexRouter)
 
-// let chat =[]
-
-// io.on('connection', socket =>{
-//   let id = Math.random()
-//   socket.emit('id', {id})
-//   socket.on('send', info=>{
-//     chat.push({name:id, message:info.data})
-//   })
-// })
-
 const users = {};
 io.on("connection", client => {
   client.on("username", username => {
