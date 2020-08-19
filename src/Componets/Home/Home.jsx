@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#a0c4ff",
   },
   root: {
+    width: "auto",
     "& > *": {
       margin: theme.spacing(1),
     },
@@ -69,6 +70,7 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
+    
   },
 }))(MuiAccordionDetails);
 
