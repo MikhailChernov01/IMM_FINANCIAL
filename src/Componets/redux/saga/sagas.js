@@ -20,7 +20,6 @@ function* fetchStock(action) {
 
 function* actionWatcher() {
   yield takeLatest(STOCK_START, fetchStock)
-  
 }
 
 export default function* rootSaga() {

@@ -15,4 +15,5 @@ export const FX_ADD_EUR = 'FX_ADD_EUR'
 export const ADD_ACCOUNT ='ADD_ACCOUNT'
 export const SHOW_ACCOUNT ='SHOW_ACCOUNT'
 export const DELETE_ACCOUNT= 'DELETE_ACCOUNT'
+export const EDIT_ACCOUNT= 'EDIT_ACCOUNT'
 

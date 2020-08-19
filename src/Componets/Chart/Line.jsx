@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Line } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
 import { startStock } from "../redux/action";
-import { TextField, Button } from "@material-ui/core";
+import { TextField, Button, Grid } from "@material-ui/core";
+
+
+
 
 export default function LineChart() {
   const dispatch = useDispatch();
@@ -50,8 +53,12 @@ export default function LineChart() {
 
 
   return (
-    <>
-      <TextField
+    <><Grid container
+    direction="row"
+    justify="center"
+    alignItems="center">
+
+      <TextField 
         id="standard-basic"
         label="Company"
         name="company"
@@ -67,6 +74,7 @@ export default function LineChart() {
       </Button>
 
       {info ? <Line data={addInfo} /> : <div style={{color:'#fff'}}>oooooooo</div>}
+    </Grid>
     </>
   );
 }
