@@ -1,4 +1,4 @@
-import { ADD_ACCOUNT, SHOW_ACCOUNT } from "./actionTypes";
+import { ADD_ACCOUNT, SHOW_ACCOUNT, DELETE_ACCOUNT } from "./actionTypes";
 
 //add ACCOUNT in  club
 export const accountAdd = () => {
@@ -31,3 +31,23 @@ export const accountAdd = () => {
     })
    }
  }
+
+//delete account
+ export const accountDelete = (id) => {
+  return async (dispatch) => {
+     const resp = await fetch('/', {
+      method: 'delete',
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id
+    })
+    });
+    const result = await resp.json();
+    dispatch({
+      type: DELETE_ACCOUNT,
+      payload: result,
+    });
+  };
+};

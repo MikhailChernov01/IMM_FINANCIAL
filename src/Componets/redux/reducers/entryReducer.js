@@ -1,4 +1,4 @@
-import { ADD_ACCOUNT, SHOW_ACCOUNT } from "../actionTypes";
+import { ADD_ACCOUNT, SHOW_ACCOUNT, DELETE_ACCOUNT } from "../actionTypes";
 
 // SERVER reducer
 export const entry = (state = { accouts: [] }, action) => {
@@ -7,6 +7,11 @@ export const entry = (state = { accouts: [] }, action) => {
       return {
         ...state,
         accounts: [...state.accounts, action.payload],
+      };
+    case DELETE_ACCOUNT:
+      return {
+        ...state,
+        accounts: [...action.payload],
       };
       case SHOW_ACCOUNT:
         return {

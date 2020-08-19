@@ -1,15 +1,32 @@
 import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { accountAdd, accountShow } from "../redux/actionLocal";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
-import  Account  from "./Account";
+import Account from "./Account";
+import styled from "styled-components";
+
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import LineChart from "../Chart/Line";
+
+const Button = styled.button`
+  background: ${(props) => props.primary || "#f9dcc4"};
+  border: 2px solid palevioletred;
+  border-radius: 8px;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18,
+    0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
+  font-family: "Roboto Condensed", sans-serif;
+`;
+
+const Typography = styled.h2`
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  text-align: center;
+`;
 
 const useStyles = makeStyles({
   root: {
@@ -21,16 +38,12 @@ const useStyles = makeStyles({
     margin: "0 2px",
     transform: "scale(0.8)",
   },
-  title: {
-    fontSize: 14,
-  },
+
   pos: {
     marginBottom: 12,
   },
-  button: {
-    background: "#f9dcc4",
-  },
   link: {
+    color: "green",
     textDecoration: "none",
   },
 });
@@ -48,56 +61,37 @@ export default function Club() {
     <Grid container spacing={3}>
       <Grid item xs={12} sm={3}>
         <Card>
-          <CardContent>
-            <Typography variant="h5" component="h2" align="center">
+          <CardContent className={classes.root}>
+            <Typography>
               {bull}Open account{bull}
             </Typography>
           </CardContent>
           <CardActions className={classes.root}>
-            <Button
-              size="small"
-              className={classes.button}
-              onClick={() => dispatch(accountAdd())}
-            >
-              Open
-            </Button>
-            <Button size="small" className={classes.button}>
-              More
-            </Button>
+            <Button onClick={() => dispatch(accountAdd())}>Open</Button>
+            <Button onClick={() => alert("No work")}>More</Button>
           </CardActions>
         </Card>
       </Grid>
-      <Grid item xs={12} sm={3}></Grid>
-      <Grid item xs={12} sm={3}></Grid>
-      <Grid item xs={12} sm={3}>
-        <Typography variant="h5" component="h4" align="center">
-          Accounts:
-        </Typography>
+      <Grid item xs={12} sm={6}>
+        <LineChart />
+      </Grid>
+      {/* <Grid item xs={12} sm={3}></Grid> */}
+      <Grid item xs={12} sm={3} className={classes.root}>
+        <Typography className={classes.root}>Accounts:</Typography>
         <br />
         {account &&
-          account.map((e, i) => <>
-            <Link
-              to={`/club/${e._id}`}
-              className={classes.link}
-              key={i}
-            >
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="h2"
-                key={i}
-                // color="secondary"
-              >
-                {e.title}
-              </Typography>
-            </Link>
-          </>)}
+          account.map((e, i) => (
+            <>
+              <Link to={`/club/${e.title}`} className={classes.link} key={i}>
+                <Typography>{e.title}</Typography>
+              </Link>
+            </>
+          ))}
       </Grid>
-      <Grid container spacing={3} justify="center" >
-        
-      <Switch>
-        <Route path='/club/:id'children={<Account/>}></Route>
-      </Switch>
+      <Grid container spacing={3} justify="center">
+        <Switch>
+          <Route path="/club/:id" children={<Account />}></Route>
+        </Switch>
       </Grid>
     </Grid>
   );
