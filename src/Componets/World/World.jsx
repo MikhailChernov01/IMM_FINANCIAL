@@ -19,22 +19,16 @@ function World() {
   const classes = useStyles();
 
   const stocks = useSelector((state) => state.fetch.indicators);
-<<<<<<< HEAD
-=======
   
 
->>>>>>> 445ab2d5447fe07ef88d43efd8630bdc170dddc5
 
   useEffect(() => {
     if (stocks.length === 0) {
       dispatch(addStockTable());
     }
   }, [dispatch]);
-<<<<<<< HEAD
-=======
 
 console.log(stocks)
->>>>>>> 445ab2d5447fe07ef88d43efd8630bdc170dddc5
 
   return (
     <>
@@ -42,11 +36,7 @@ console.log(stocks)
         <Grid item xs={12} sm={4}>
           <StocksUsa />
         </Grid>
-<<<<<<< HEAD
-        <Grid className={classes.tables} item xs={12} sm={8}>
-=======
         <Grid className={classes.tables} item xs={12} sm={8} >
->>>>>>> 445ab2d5447fe07ef88d43efd8630bdc170dddc5
           <LineChartAppl />
         </Grid>
       </Grid>

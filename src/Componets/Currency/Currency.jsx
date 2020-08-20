@@ -15,7 +15,16 @@ function Currency() {
       fontFamily: [
         "Roboto", "Helvetica", "Arial", "sans-serif"
       ].join(','),
+      padding: '10em',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center'
       
+    },
+    currCard: {
+      margin: '0',
+      width: "100%",
+      padding: '100px'
     }
 
   });
@@ -42,9 +51,9 @@ function Currency() {
   }, [dispatch]);
 
   return (
-    <Grid className={classes.tables} container spacing={2}>
+    <Grid className={classes.tables} container spacing={5}>
 
-      <Grid item xs={12} sm={6}>
+      <Grid className={classes.currCard} item xs={12} sm={6}>
         <Card >
           <CardContent >
             <LineCurrency />
@@ -52,7 +61,7 @@ function Currency() {
         </Card>
       </Grid>
 
-      <Grid item xs={12} sm={6}>
+      <Grid className={classes.currCard} item xs={12} sm={6}>
         <Card >
           <CardContent >
             <LineChartEuro />
