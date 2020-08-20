@@ -152,7 +152,7 @@ export default function SimpleBottomNavigation() {
         showLabels
         className={magic !== true ? classes.root : classes.magicNav}
       >
-        {console.log(magic)}
+       
         <Link to="/home" className={classes.link}>
           <ListItem button>
             <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Finance</ListItemIcon>

@@ -7,7 +7,7 @@ const fetchOnStock = async (symbol) => {
     `https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=${symbol}&apikey=${process.env.REACT_APP_ALPHA_KEY_TWO}`
   );
   const resultResp = await response.json();
-  return resultResp;
+  return [resultResp];
 };
 
 const fetchCOVID_19 = async () => {
