@@ -12,6 +12,10 @@ function Crisis() {
   }, [dispatch]);
   return (
     <>
+      <br />
+      <br />
+      <br />
+      <br />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Typography component="h1" variant="h3">
@@ -57,8 +61,13 @@ function Crisis() {
             to be clear on the role to be played going forward by handwashing
             and other personal hygiene measures.
             <br />
+            <br />
+            <br />
+            <br />
+            <br />
           </Typography>
         </Grid>
+
         <Grid item xs={12} sm={(4, 5)}>
           <Typography component="h1" variant="h3">
             COVID-19: Implications for business
@@ -93,7 +102,10 @@ function Crisis() {
             scope of the pandemic’s effects on different industries and
             workforces and address cautious consumers. Also this week: we’ve
             added a special collection, The next normal: The recovery will be
-            digital.
+            digital.We’ve now reached August, the time of year when many people
+            take a break, or at least slow down—even in a pandemic. With that in
+            mind, McKinsey broadened its annual summer reading list and asked 60
+            diverse leaders to share books.
           </Typography>
         </Grid>
         <Grid item xs={12} sm={4}>
@@ -150,7 +162,10 @@ function Crisis() {
             the 1997 Asian currency crisis. There are no global comparable
             precedents since World War II. The economic impact has been
             dramatic, and it seems reasonable to assume that lifting lockdowns
-            would provide a proportional stimulus.
+            would provide a proportional stimulus. Our new research shows how
+            banks are tending to a radical surge in demand for one of their most
+            ancient practices: measuring and monitoring credit risk. Leading
+            banks are deploying a new configuration of sector analysis.
           </Typography>
         </Grid>
 
@@ -158,6 +173,8 @@ function Crisis() {
           <Typography component="h1" variant="h3">
             Reimagining the postpandemic economic future
           </Typography>
+          <br />
+          <br />
           <ChartCOVID_19 />
           <br />
           <br />
@@ -224,7 +241,12 @@ function Crisis() {
             navigating and accessing channels of aid.
           </Typography>
         </Grid>
+
         <Grid item xs={12}>
+          <br />
+          <br />
+          <br />
+          <br />
           <Typography component="h1" variant="h3">
             Laying foundations for a reimagined economy
           </Typography>

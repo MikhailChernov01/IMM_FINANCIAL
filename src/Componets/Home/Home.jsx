@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { newsAdd } from "../redux/action";
 import {} from "dotenv/config";
 import LineChart from "../Chart/Line";
+import SchedulerChart from "../Scheduler/Scheduler";
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: "#a0c4ff",
+    color: "rgba(75,192,192,1)",
   },
   root: {
     width: "auto",
@@ -25,11 +27,19 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   title: {
+<<<<<<< HEAD
     fontSize: "10px",
   },
   news: {
     fontSize: "8px",
   },
+=======
+    fontSize: '20px'
+  },
+  news:{
+    fontSize: '18px'
+  }
+>>>>>>> 2e2d28dfe919dd83e65e4f35460954618fc3b221
 }));
 
 const Accordion = withStyles({
@@ -79,6 +89,9 @@ function Home() {
   const news = useSelector((state) => state.fetch.news[0]);
   const [expanded, setExpanded] = useState(0);
 
+  console.log(news);
+  
+
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
   };
@@ -90,7 +103,7 @@ function Home() {
   return (
     <>
       <div className={classes.root}>
-        <h1 className={classes.paper}>Деловые Новости</h1>
+        <h1 className={classes.paper}>Business news</h1>
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             {news &&
@@ -110,9 +123,8 @@ function Home() {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className={classes.news} key={i}>
-                        {elem.content}
-                      </Typography>
+                      <Typography className={classes.news} key={i}>{elem.description}<br/><a href={elem.url}>Read more</a></Typography>
+                      
                     </AccordionDetails>
                   </Accordion>
                 </>

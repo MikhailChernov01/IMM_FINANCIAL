@@ -1,8 +1,12 @@
 import React from 'react'
+import SchedulerChart from '../Scheduler/Scheduler'
 
 function Strategy() {
   return (
-    <div>Strategy</div>
+
+    <>
+    <SchedulerChart/>
+    </>
   )
 }
 

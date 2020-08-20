@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import '../SignIn/SignIn.css';
-import BackgroundVideo from '../SignIn/Video/background.mp4';
+import BackgroundVideo from '../BackVideo/Video/background.mp4';
 import { AuthContext } from '../../Auth';
 
-function BackVideo() {
+function BackVideo(props) {
   const { currentUser } = useContext(AuthContext);
 
   // console.log(currentUser);
