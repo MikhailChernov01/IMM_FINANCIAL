@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import ChartCOVID_19 from '../ChartCOVID_19/ChartCOVID_19';
+import { useDispatch } from 'react-redux';
+import { startFetch } from '../redux/action';
 
 function Crisis() {
+  const dispatch= useDispatch()
+
+  useEffect(() => {
+    dispatch(startFetch());
+  }, [dispatch]);
   return (
     <>
       <Grid container spacing={2}>

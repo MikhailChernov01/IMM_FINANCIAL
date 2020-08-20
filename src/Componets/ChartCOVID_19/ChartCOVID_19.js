@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import Paper from '@material-ui/core/Paper';
+import React, { useEffect } from "react";
+import Paper from "@material-ui/core/Paper";
 import {
   Chart,
   BarSeries,
   Title,
   ArgumentAxis,
   ValueAxis,
-} from '@devexpress/dx-react-chart-material-ui';
-import { Animation } from '@devexpress/dx-react-chart';
-import { useDispatch, useSelector } from 'react-redux';
-import { startFetch } from '../redux/action';
+} from "@devexpress/dx-react-chart-material-ui";
+import { Animation } from "@devexpress/dx-react-chart";
+import { useDispatch, useSelector } from "react-redux";
+import { startFetch } from "../redux/action";
 
 function ChartCOVID_19(props) {
   const dispatch = useDispatch();
@@ -18,7 +18,6 @@ function ChartCOVID_19(props) {
   useEffect(() => {
     dispatch(startFetch());
   }, [dispatch]);
-
   return (
     <>
       <Paper>

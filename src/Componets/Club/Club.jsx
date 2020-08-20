@@ -4,7 +4,6 @@ import { accountAdd, accountShow, accountDelete } from "../redux/actionLocal";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import Account from "./Account";
-import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -13,6 +12,7 @@ import CardContent from "@material-ui/core/CardContent";
 import LineChart from "../Chart/Line";
 import Office from "../Client/Office";
 
+import styled from "styled-components";
 const Button = styled.button`
   background: ${(props) => props.primary || "#f9dcc4"};
   border: 2px solid palevioletred;
@@ -69,23 +69,24 @@ export default function Club() {
           </CardContent>
           <CardActions className={classes.root}>
             <Button onClick={() => dispatch(accountAdd())}>Open</Button>
-           <a href="https://money.yandex.ru/start"><Button >More</Button></a> 
+            <a href="https://money.yandex.ru/start">
+              <Button>More</Button>
+            </a>
+            <Office />
           </CardActions>
         </Card>
       </Grid>
       <Grid item xs={12} sm={6}>
-      
         <LineChart />
-        <Office/>
       </Grid>
-      
+
       <Grid item xs={12} sm={3} className={classes.root}>
         <Typography className={classes.root}>Accounts:</Typography>
         <br />
         {account &&
           account.map((e, i) => (
             <>
-              <Link to={`/club/${e.title}`} className={classes.link} key={i} >
+              <Link to={`/club/${e.title}`} className={classes.link} key={i}>
                 <Typography>{e.title}</Typography>
               </Link>
             </>
@@ -93,7 +94,9 @@ export default function Club() {
       </Grid>
       <Grid container spacing={3} justify="center">
         <Switch>
-          <Route path="/club/:id" ><Account /></Route>
+          <Route path="/club/:id">
+            <Account />
+          </Route>
         </Switch>
       </Grid>
     </Grid>
