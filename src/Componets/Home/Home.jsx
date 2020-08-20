@@ -27,19 +27,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   title: {
-<<<<<<< HEAD
-    fontSize: "10px",
-  },
-  news: {
-    fontSize: "8px",
-  },
-=======
     fontSize: '20px'
   },
   news:{
     fontSize: '18px'
   }
->>>>>>> 2e2d28dfe919dd83e65e4f35460954618fc3b221
 }));
 
 const Accordion = withStyles({
@@ -130,7 +122,7 @@ function Home() {
                 </>
               ))}
           </Grid>
-          <Grid item xs={12} sm={3}>
+          <Grid item xs={12} sm={6}>
             <LineChart />
           </Grid>
         </Grid>

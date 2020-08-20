@@ -77,6 +77,7 @@ const SignUp = ({ history }) => {
           lastName: lastName,
           created: new Date(),
         });
+        
         history.push('/');
       } catch (error) {
         alert(error);
