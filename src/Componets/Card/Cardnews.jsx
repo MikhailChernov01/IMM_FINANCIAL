@@ -46,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
   red: {
     color: "red",
   },
+  pos: {
+    justifyContent: "center",
+    justifyItems: "center",
+  },
 }));
 
 export default function Cardnews() {
@@ -75,7 +79,7 @@ export default function Cardnews() {
           news.articles.map((elem, i) => (
             <>
               <Grid item xs={12} sm={3}>
-                <Card className={classes.root} name={i}>
+                <Card className={classes.pos} name={i}>
                   <CardHeader
                     avatar={
                       <Avatar aria-label="recipe" className={classes.avatar}>
