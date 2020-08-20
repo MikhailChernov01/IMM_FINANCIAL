@@ -8,6 +8,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { addCurrency } from "../redux/action";
 import { addEuro } from "../redux/action";
+import Container from '@material-ui/core/Container';
 
 function Currency() {
   const useStyles = makeStyles({
@@ -17,6 +18,7 @@ function Currency() {
       ].join(','),
       padding: '10em',
       width: '100%',
+      height: '100%',
       display: 'flex',
       justifyContent: 'center'
       
@@ -25,7 +27,10 @@ function Currency() {
       margin: '0',
       width: "100%",
       padding: '100px'
-    }
+    },
+    container:{
+      minHeight: '100vh',      
+    },
 
   });
 
@@ -51,6 +56,7 @@ function Currency() {
   }, [dispatch]);
 
   return (
+    <Container className={classes.container} component="main" maxWidth="xl" >
     <Grid className={classes.tables} container spacing={5}>
 
       <Grid className={classes.currCard} item xs={12} sm={6}>
@@ -69,6 +75,7 @@ function Currency() {
         </Card>
       </Grid>
     </Grid>
+    </Container>
   )
 }
 

@@ -189,7 +189,7 @@ export default function SimpleBottomNavigation() {
           </ListItem>
         </Link>
         <Link
-          // to="/"
+          
           className={classes.link}
           onClick={() => {
             dispatch(thisAction());
