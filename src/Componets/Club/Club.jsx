@@ -11,6 +11,7 @@ import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import LineChart from "../Chart/Line";
+import Office from "../Client/Office";
 
 const Button = styled.button`
   background: ${(props) => props.primary || "#f9dcc4"};
@@ -73,9 +74,11 @@ export default function Club() {
         </Card>
       </Grid>
       <Grid item xs={12} sm={6}>
+      
         <LineChart />
+        <Office/>
       </Grid>
-      {/* <Grid item xs={12} sm={3}></Grid> */}
+      
       <Grid item xs={12} sm={3} className={classes.root}>
         <Typography className={classes.root}>Accounts:</Typography>
         <br />
