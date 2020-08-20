@@ -10,7 +10,7 @@ export const fetch = (state = { news: [], stock: [], indicators:[], usd:[], euro
     case STOCK_ADD:
       return {
         ...state,
-        stock: [action.payload],
+        stock: action.payload,
       };
     case STOCK_TABLE_ADD:
       return {

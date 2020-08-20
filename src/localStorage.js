@@ -4,7 +4,7 @@ export const loadState = () => {
     if (serializedState === null) {
       return {
         action: { magic: [] },
-        fetch: { news: [], stock: [], indicators: [], usd: [], euro: [] },
+        fetch: { news: [], stock: [], indicators: [], usd: [], euro: [] , covid:[]},
         entry: { accounts: [] },
       };
     }

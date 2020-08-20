@@ -22,7 +22,6 @@ router
     const { id } = req.body;
     await Account.findOneAndDelete({ title: id });
     const result = await Account.find({});
-    console.log(result);
     res.json(result);
   });
 

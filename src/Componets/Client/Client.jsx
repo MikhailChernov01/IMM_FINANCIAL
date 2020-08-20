@@ -1,11 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import { makeStyles } from '@material-ui/core';
 import moment from 'moment';
-import { AuthContext } from '../../Auth';
-// import "bootstrap/dist/css/bootstrap.css";
 
-// const username = prompt("what is your username");
 
 const socket = io('http://localhost:4444', {
   transports: ['websocket', 'polling'],
@@ -18,18 +15,12 @@ const useStyles = makeStyles({
 });
 
 function Client() {
-  const { currentUser } = useContext(AuthContext);
+  
  
 
   let username = 'You write:';
 
-  // let  username = currentUser
-  // console.log(username);
-  if (currentUser) {
-    username = currentUser.displayName
-  }
-  
-  const classes = useStyles();
+   const classes = useStyles();
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
@@ -71,7 +62,7 @@ function Client() {
     <div>
       <div className="row">
         <div className="col-md-12 mt-4 mb-4">
-          <h6>Hello {currentUser ? currentUser.displayName : 'User'}</h6>
+          <h6>Hello {'User'}</h6>
         </div>
       </div>
       <div className="row">
