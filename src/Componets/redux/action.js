@@ -1,4 +1,4 @@
-import { THIS_ACTION, NEWS_ADD, STOCK_ADD, STOCK_START, STOCK_TABLE_ADD, FX_ADD_USD, FX_ADD_EUR } from "./actionTypes";
+import { THIS_ACTION, NEWS_ADD, STOCK_ADD, STOCK_START, STOCK_TABLE_ADD, FX_ADD_USD, FX_ADD_EUR, ADD_COVID_19, START_FETCH_COVID_19, RECEIVE_COVID_19 } from "./actionTypes";
 
 export const thisAction = () => ({
   type: THIS_ACTION,
@@ -75,5 +75,27 @@ export const addEuro = () => {
        type: FX_ADD_EUR,
        payload: r,
      });   
+  };
+};
+
+
+
+export const addCovid = (payload) => {
+  return {
+    type: ADD_COVID_19,
+    payload,
+  };
+};
+
+export const startFetch = () => {
+  return {
+    type: START_FETCH_COVID_19,
+  };
+};
+
+export const receiveDataFromFetch = (payload) => {
+  return {
+    type: RECEIVE_COVID_19,
+    payload,
   };
 };

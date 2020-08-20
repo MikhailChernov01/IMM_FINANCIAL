@@ -15,7 +15,9 @@ import { loadState, saveState } from "./localStorage";
 
 const persisteState = loadState();
 
+
 // const initialStore = {action:{magic:[]},fetch:{news:[],stock:[], indicators: [], usd:[], euro:[]}, entry:{accounts:[]}};
+
 
 const sagaMiddleware = createSagaMiddleware();
 
