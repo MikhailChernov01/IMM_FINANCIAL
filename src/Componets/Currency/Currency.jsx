@@ -34,21 +34,21 @@ function Currency() {
   const dispatch = useDispatch();
   const euro = useSelector((state) => state.fetch.euro[0]);  
 
-  // useEffect(() => {
-  //   if (!euro) {
-  //     console.log('>>>Euro has request')
-  //     dispatch(addEuro());
-  //   }
-  // }, [dispatch]);
+  useEffect(() => {
+    if (!euro) {
+      console.log('>>>Euro has request')
+      dispatch(addEuro());
+    }
+  }, [dispatch]);
 
   const dollar = useSelector((state) => state.fetch.usd[0]);
 
-  // useEffect(() => {
-  //   if (!dollar) {
-  //     console.log('>>>>>>Dollar has request')
-  //     dispatch(addCurrency());
-  //   }
-  // }, [dispatch]);
+  useEffect(() => {
+    if (!dollar) {
+      console.log('>>>>>>Dollar has request')
+      dispatch(addCurrency());
+    }
+  }, [dispatch]);
 
   return (
     <Grid className={classes.tables} container spacing={5}>
