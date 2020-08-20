@@ -50,6 +50,16 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     justifyItems: "center",
   },
+  main: {
+     
+      fontFamily: [
+        "Roboto", "Helvetica", "Arial", "sans-serif"
+      ].join(','),
+              
+      padding: '0 5%',    
+      height: '100%'
+    
+  }
 }));
 
 export default function Cardnews() {
@@ -74,7 +84,8 @@ export default function Cardnews() {
 
   return (
     <>
-      <Grid container direction="row" spacing={3}>
+      <Grid className={classes.main}
+      container direction="row" spacing={3}>
         {news &&
           news.articles.map((elem, i) => (
             <>

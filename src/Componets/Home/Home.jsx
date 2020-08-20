@@ -14,12 +14,16 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: "rgba(75,192,192,1)",
+    color: "#414141",
+    fontFamily: [
+      "Roboto", "Helvetica", "Arial", "sans-serif"
+    ].join(','),
   },
   root: {
     width: "auto",
+    padding: '0 5%',
     "& > *": {
-      margin: theme.spacing(1),
+      // margin: theme.spacing(1),
     },
     flexGrow: 1,
   },

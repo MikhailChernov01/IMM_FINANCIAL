@@ -12,6 +12,7 @@ import App from "./App";
 import combineReducer from "./Componets/redux/combineReducer";
 import rootSaga from "./Componets/redux/saga/sagas";
 import { loadState, saveState } from "./localStorage";
+import './index.css';
 
 const persisteState = loadState();
 

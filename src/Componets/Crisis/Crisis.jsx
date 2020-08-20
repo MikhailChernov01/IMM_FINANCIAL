@@ -3,9 +3,29 @@ import { Grid, Typography } from '@material-ui/core';
 import ChartCOVID_19 from '../ChartCOVID_19/ChartCOVID_19';
 import { useDispatch } from 'react-redux';
 import { startFetch } from '../redux/action';
+import { makeStyles} from "@material-ui/core";
+import { useSelector } from "react-redux";
+
+
+const useStyles = makeStyles((theme) => ({
+ 
+  root: {   
+    fontFamily: [
+      "Roboto", "Helvetica", "Arial", "sans-serif"
+    ].join(','),
+    fontSize: '1.2em',         
+    padding: '0 5%',    
+    height: '100%'
+  },
+  
+  
+}));
+
 
 function Crisis() {
   const dispatch= useDispatch()
+  const magic = useSelector((state) => state.action.magic);
+  const classes = useStyles();
 
   useEffect(() => {
     dispatch(startFetch());
@@ -16,7 +36,7 @@ function Crisis() {
       <br />
       <br />
       <br />
-      <Grid container spacing={2}>
+      <Grid container spacing={3} className={classes.root }>
         <Grid item xs={12} sm={6}>
           <Typography component="h1" variant="h3">
             COVID-19: How Do We Re-open the Economy?

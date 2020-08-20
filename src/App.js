@@ -27,20 +27,21 @@ const useStyles = makeStyles((theme) => ({
   // },
   root: {
     minWidth: "auto",
-    minHeight: "auto",
+    minHeight: "100%",
     backgroundColor: "#EEEEEE",
     "& > *": {           
-      margin: 0,
+      margin: '0',
      },
     
   },
   magic: {
-    maxWidth: "auto",
-    minHeight: "auto",
-    margin: "auto",
+    minWidth: "auto",
+    height: "100%",
+    
     backgroundColor: "#414141",        
     "& > *": {      
-      color: "white",      
+      color: "white", 
+      margin: '0',     
     },
   },
   
@@ -58,7 +59,7 @@ function App() {
       <Grid className={magic !== true ? classes.root : classes.magic}>
         <DollarImage className={classes.image}/>
         <Navbar />
-      <Grid>
+      <Grid >
         <Switch>
           <Route path="/home">
             <Home />

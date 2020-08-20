@@ -13,6 +13,7 @@ function World() {
       fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       display: "flex",
       flexWrap: "wrap",
+      padding: '0 5%'
     },
   });
 
