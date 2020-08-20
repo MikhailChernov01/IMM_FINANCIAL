@@ -15,6 +15,7 @@ import { useInputs } from './useInputs';
 import { withRouter } from 'react-router';
 import app from '../../firebase/firebase';
 import { db } from '../../firebase/firebase';
+import { useSelector } from "react-redux";
 
 function Copyright() {
   return (
@@ -42,8 +43,16 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
   },
+  formNight: {
+    width: '100%', // Fix IE 11 issue.
+     marginTop: theme.spacing(1),
+     "& > *": {           
+       color: 'white',
+      },      
+     
+   },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
@@ -52,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const SignUp = ({ history }) => {
+  const magic = useSelector((state) => state.action.magic);
   const { currentUser } = useContext(AuthContext);
   const [input, getInformation] = useInputs({
     firstName: '',
@@ -103,7 +113,7 @@ const SignUp = ({ history }) => {
         >
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <TextField className={magic !== true ? classes.form : classes.formNight}
                 onChange={getInformation}
                 value={input.firstName}
                 autoComplete="fname"
@@ -117,7 +127,7 @@ const SignUp = ({ history }) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <TextField
+              <TextField className={magic !== true ? classes.form : classes.formNight}
                 onChange={getInformation}
                 value={input.lastName}
                 variant="outlined"
@@ -130,7 +140,7 @@ const SignUp = ({ history }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <TextField className={magic !== true ? classes.form : classes.formNight}
                 onChange={getInformation}
                 value={input.email}
                 variant="outlined"
@@ -143,7 +153,7 @@ const SignUp = ({ history }) => {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
+              <TextField className={magic !== true ? classes.form : classes.formNight}
                 onChange={getInformation}
                 value={input.password}
                 variant="outlined"
