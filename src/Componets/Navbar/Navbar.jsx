@@ -15,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#EEEEEE'
   },
   magicNav: {
-    backgroundColor: '#414141'
+    backgroundColor: '#414141',
+    "& > *": {      
+      color: "white",      
+    },
   },
   
   link: {
@@ -47,7 +50,7 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
         showLabels
-        className={magic==false ? classes.root : classes.magicNav}
+        className={magic ? classes.root : classes.magicNav}
       >
         {console.log(magic)}
         <Link to="/home" className={classes.link}>
@@ -116,7 +119,7 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
         showLabels
-        className={magic ? classes.root : classes.magicNav}
+        className={magic == false ? classes.root : classes.magicNav}
       >
         <Link to="/home" className={classes.link}>
           <ListItem button>
