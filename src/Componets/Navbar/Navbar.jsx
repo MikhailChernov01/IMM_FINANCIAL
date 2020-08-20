@@ -15,11 +15,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#EEEEEE'
   },
   magicNav: {
+    width: '100%',
+    paddingTop: '15px',
     backgroundColor: '#414141',
-    "& > *": {      
-      color: "white",      
     },
-  },
   
   link: {
     textDecoration: 'none',
@@ -28,6 +27,14 @@ const useStyles = makeStyles((theme) => ({
     ].join(','),
     fontSize: "1.2em",
     color: '#444444',
+  },
+  linkNight: {
+    textDecoration: 'none',
+    fontFamily: [
+      "Roboto", "Helvetica", "Arial", "sans-serif"
+    ].join(','),
+    fontSize: "1.2em",
+    color: 'white',
   },
 }));
 
@@ -50,47 +57,42 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
         showLabels
-        className={magic ? classes.root : classes.magicNav}
+        className={magic !== true ? classes.root : classes.magicNav}
       >
         {console.log(magic)}
         <Link to="/home" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Finance</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Finance</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/world" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Global market</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Global market</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/club" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Private Office</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Private Office</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/forum" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Forum</ListItemIcon>
-          </ListItem>
-        </Link>
-        <Link to="/pif" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon className={classes.link}>Pif</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Forum</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/application" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Apps</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Apps</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/strategy" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Strategies</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Strategies</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/crisis" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Crisis 2020</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Crisis 2020</ListItemIcon>
           </ListItem>
         </Link>
         <Link
@@ -101,12 +103,12 @@ export default function SimpleBottomNavigation() {
           }}
         >
           <ListItem button>
-            <ListItemIcon className={classes.link}>Magic</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Magic</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/" className={classes.link}>
           <ListItem button onClick={() => app.auth().signOut()}>
-            <ListItemIcon className={classes.link}>Log Out</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Log Out</ListItemIcon>
           </ListItem>
         </Link>
       </BottomNavigation>
@@ -119,36 +121,31 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
         showLabels
-        className={magic == false ? classes.root : classes.magicNav}
+        className={magic !== true ? classes.root : classes.magicNav}
       >
         <Link to="/home" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Finance</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Finance</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/world" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Global market</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Global market</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/currency" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Forien exchange market</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Forien exchange market</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/forum" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Forum</ListItemIcon>
-          </ListItem>
-        </Link>
-        <Link to="/pif" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon className={classes.link}>Pif</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Forum</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/crisis" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Crisis 2020</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Crisis 2020</ListItemIcon>
           </ListItem>
         </Link>
         <Link
@@ -159,17 +156,17 @@ export default function SimpleBottomNavigation() {
           }}
         >
           <ListItem button>
-            <ListItemIcon className={classes.link}>Magic</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Magic</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/entry" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Sign In</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Sign In</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/registration" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={classes.link}>Sign Up</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Sign Up</ListItemIcon>
           </ListItem>
         </Link>
       </BottomNavigation>

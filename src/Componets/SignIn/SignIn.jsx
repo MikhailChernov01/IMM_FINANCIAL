@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import '../SignIn/SignIn.css';
 import { withRouter } from 'react-router';
 import app from '../../firebase/firebase';
+import { useSelector } from "react-redux";
 
 
 function Copyright() {
@@ -43,6 +44,14 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
+  formNight: {
+    "& > *": {           
+      color: 'white',
+     },
+    
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
@@ -50,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 const SignIn = ({ history }) => {
+  const magic = useSelector((state) => state.action.magic);
   const [email, getEmail] = useState('');
   const [password, getPassword] = useState('');
   const classes = useStyles();
@@ -79,7 +89,7 @@ const SignIn = ({ history }) => {
             Sign In
           </Typography>
           <form
-            className={classes.form}
+            className={magic !== true ? classes.form : classes.formNight}
             onSubmit={handleLogIn}
             noValidate
             method="POST"
