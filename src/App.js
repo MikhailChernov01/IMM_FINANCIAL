@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   // },
   root: {
     minWidth: "auto",
-    
+    minHeight: "auto",
     backgroundColor: "#EEEEEE",
     "& > *": {           
       margin: 0,
@@ -36,12 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
   magic: {
     maxWidth: "auto",
+    minHeight: "auto",
     margin: "auto",
-    backgroundColor: "#414141",
-        
+    backgroundColor: "#414141",        
     "& > *": {      
-      color: "white",
-      
+      color: "white",      
     },
   },
   
@@ -56,9 +55,9 @@ function App() {
     <>
     <AuthProvider>
 
-      <Grid className={magic ? classes.root : classes.magic}>
+      <Grid className={magic !== true ? classes.root : classes.magic}>
         <DollarImage className={classes.image}/>
-        <Navbar className={magic ? classes.root : classes.magic} />
+        <Navbar />
       <Grid>
         <Switch>
           <Route path="/home">
