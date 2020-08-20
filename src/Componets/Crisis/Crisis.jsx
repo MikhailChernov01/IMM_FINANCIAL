@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
-import CardMedia from '@material-ui/core/CardMedia';
+import ChartCOVID_19 from '../ChartCOVID_19/ChartCOVID_19';
+
 function Crisis() {
   return (
     <>
@@ -119,12 +120,38 @@ function Crisis() {
             the United States have registered 10.6 percent drops in the first
             half of 2020, while Spain and the United Kingdom have reported
             almost unimaginable declines of 22.7 and 22.1 percent, respectively.
+            From this trough, growth would need to average 5 to 12 percent for
+            two consecutive quarters to return GDP to the level at which it
+            started the year. Our new research looking for visible indicators of
+            economic activity that would suggest such a rebound in growth finds
+            them only in the countries that have successfully placed the virus
+            under control. The evidence heavily suggests that a multifaceted
+            public-health response that goes well beyond a simple transient
+            lockdown is a necessary first step to restore confidence and create
+            the conditions for growth. It won’t be cheap: the cost of getting
+            the virus under control is likely measured in the billions, or
+            perhaps hundreds of billions, of dollars. But it is also clear that
+            the opportunity cost of waiting is almost surely measured in unknown
+            thousands of lives and trillions of dollars. The impact of delay is
+            not linear. For every three months we delay in getting the virus
+            under control, we push back the return of GDP to precrisis levels by
+            about six months. Time is the enemy of both lives and
+            livelihoods.The novel coronavirus and subsequent lockdowns have
+            halted economic activity in nearly unprecedented ways: the only
+            events that similarly brought local economic activity to a sudden
+            stop are currency crises, such as the 1994 Mexican peso crisis and
+            the 1997 Asian currency crisis. There are no global comparable
+            precedents since World War II. The economic impact has been
+            dramatic, and it seems reasonable to assume that lifting lockdowns
+            would provide a proportional stimulus.
           </Typography>
         </Grid>
+
         <Grid item xs={12} sm={8}>
           <Typography component="h1" variant="h3">
             Reimagining the postpandemic economic future
           </Typography>
+          <ChartCOVID_19 />
           <br />
           <br />
           <Typography align="justify">
@@ -260,6 +287,10 @@ function Crisis() {
           </Typography>
         </Grid>
       </Grid>
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 }
