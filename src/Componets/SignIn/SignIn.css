@@ -2,7 +2,7 @@ body {
   font-family: 'Roboto';
   margin: 0;
   padding: 0;
-  height: 100vh
+  max-height: 100%
 }
 .video-bg {
   height: 100vh;
@@ -43,4 +43,5 @@ body {
   margin: 0 auto;
   margin-top: 50px;
   padding: 0 20px;
+ 
 }

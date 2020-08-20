@@ -5,15 +5,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import LineChartAppl from "../ChartAppl/ChartAppl";
 import { addStockTable } from "../redux/action";
 import { useDispatch, useSelector } from "react-redux";
+import Container from '@material-ui/core/Container';
 
 function World() {
   const dispatch = useDispatch()
   const useStyles = makeStyles({
+   
     tables: {
       fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       display: "flex",
       flexWrap: "wrap",
-      padding: '0 5%'
+      padding: '0 5%',
+      minHeight: '100%'
+    },
+    container:{
+      minHeight: '100vh',
+      
     },
   });
 
@@ -33,6 +40,7 @@ console.log(stocks)
 
   return (
     <>
+    <Container className={classes.container} component="main" maxWidth="xl" >
       <Grid className={classes.tables} container spacing={2}>
         <Grid item xs={12} sm={4}>
           <StocksUsa />
@@ -41,6 +49,7 @@ console.log(stocks)
           <LineChartAppl />
         </Grid>
       </Grid>
+      </Container>
     </>
   );
 }
