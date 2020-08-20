@@ -14,7 +14,7 @@ function VideoMain() {
         </video>
         <div className="effects"></div>
         <div className="video-bg__content">
-          <h1>
+          <h1 className="allThings">
             We do all things
           </h1>
         </div>
