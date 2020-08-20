@@ -143,7 +143,7 @@ function Crisis() {
             the 1997 Asian currency crisis. There are no global comparable
             precedents since World War II. The economic impact has been
             dramatic, and it seems reasonable to assume that lifting lockdowns
-            would provide a proportional stimulus. 
+            would provide a proportional stimulus.
           </Typography>
         </Grid>
 
@@ -287,6 +287,10 @@ function Crisis() {
           </Typography>
         </Grid>
       </Grid>
+      <br />
+      <br />
+      <br />
+      <br />
     </>
   );
 }

@@ -39,7 +39,6 @@ function* fetchStock(action) {
 function* actionWatcher() {
   yield takeLatest(START_FETCH_COVID_19, fetchData);
   yield takeLatest(STOCK_START, fetchStock)
-  
 }
 
 export default function* rootSaga() {

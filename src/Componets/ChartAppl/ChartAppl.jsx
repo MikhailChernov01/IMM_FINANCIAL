@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Line } from "react-chartjs-2";
 import { useSelector } from "react-redux";
 import Grid from '@material-ui/core/Grid';
@@ -19,8 +19,6 @@ export default function LineChartAppl() {
   const stocks = useSelector((state) => state.fetch.indicators);
   console.log(stocks)
 
-  let currentValue = "";
-
   let data = {}
 
   function drawLineChart(stockItem) {
@@ -31,7 +29,7 @@ export default function LineChartAppl() {
           return el["4. close"];
         }
       }).reverse();
-      currentValue = parseFloat(tempCurrency.pop())
+      // currentValue = parseFloat(tempCurrency.pop())
 
       return data = {
         labels: Object.keys(stockItem["Time Series (Daily)"]).reverse(),

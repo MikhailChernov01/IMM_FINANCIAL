@@ -11,13 +11,24 @@ import { logger } from 'redux-logger';
 import App from './App';
 import combineReducer from './Componets/redux/combineReducer';
 import rootSaga from './Componets/redux/saga/sagas';
+import { loadState, saveState } from "./localStorage";
+
+const persisteState = loadState();
 
 
-const initialStore = {action:{magic:[]},fetch:{news:[],stock:[], indicators: [], usd:[], euro:[],covid:[]}, entry:{accounts:[]}};
+// const initialStore = {action:{magic:[]},fetch:{news:[],stock:[], indicators: [], usd:[], euro:[]}, entry:{accounts:[]}};
+
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(combineReducer, initialStore, composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware)));
+const store = createStore(combineReducer, persisteState, composeWithDevTools(applyMiddleware(thunk, logger, sagaMiddleware)));
+
+
+store.subscribe(() => {
+  saveState({
+    fetch: store.getState().fetch,    
+  });
+});
 
 sagaMiddleware.run(rootSaga);
 

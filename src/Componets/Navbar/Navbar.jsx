@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from "react-redux";
 import { BottomNavigation, ListItem, ListItemIcon } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { thisAction } from '../redux/action';
@@ -10,11 +11,23 @@ import app from '../../firebase/firebase';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    paddingTop: '15px',
+    backgroundColor: '#EEEEEE'
   },
+  magicNav: {
+    backgroundColor: '#414141',
+    "& > *": {      
+      color: "white",      
+    },
+  },
+  
   link: {
     textDecoration: 'none',
-    fontFamily: 'serif',
-    color: '#457b9d',
+    fontFamily: [
+      "Roboto", "Helvetica", "Arial", "sans-serif"
+    ].join(','),
+    fontSize: "1.2em",
+    color: '#444444',
   },
 }));
 
@@ -23,18 +36,23 @@ export default function SimpleBottomNavigation() {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const dispatch = useDispatch();
+  const magic = useSelector((state) => state.action.magic);
+  
    
+
 
   if (currentUser) {
     return (
+      
       <BottomNavigation
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
         showLabels
-        className={classes.root}
+        className={magic ? classes.root : classes.magicNav}
       >
+        {console.log(magic)}
         <Link to="/home" className={classes.link}>
           <ListItem button>
             <ListItemIcon className={classes.link}>Finance</ListItemIcon>
@@ -101,7 +119,7 @@ export default function SimpleBottomNavigation() {
           setValue(newValue);
         }}
         showLabels
-        className={classes.root}
+        className={magic == false ? classes.root : classes.magicNav}
       >
         <Link to="/home" className={classes.link}>
           <ListItem button>

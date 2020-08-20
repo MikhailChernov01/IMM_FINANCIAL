@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Line } from "react-chartjs-2";
-import { useDispatch, useSelector } from "react-redux";
-import { addCurrency } from "../redux/action";
+import { useSelector } from "react-redux";
+
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { green, red } from '@material-ui/core/colors';
@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 export default function LineChart() {
 
   const useStyles = makeStyles({
-    
+
     percent: {
       minWidth: 100,
       display: "flex",
@@ -21,33 +21,30 @@ export default function LineChart() {
   });
   const classes = useStyles();
 
-  
 
-  const dispatch = useDispatch();
+
+
   const currency = useSelector((state) => state.fetch.usd[0]);
-   
-    useEffect(() => {
-    dispatch(addCurrency());
-  }, [dispatch]);
 
-  let currentValue ="";
+
+  let currentValue = "";
   let lastOpenValue = "";
-let data={}
-if (currency) {
-  let tempCurrency = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
-    if (el) {
-      return el["4. close"];
-    }
-  }).reverse();
-  currentValue = parseFloat(tempCurrency.pop())
+  let data = {}
+  if (currency) {
+    let tempCurrency = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
+      if (el) {
+        return el["4. close"];
+      }
+    }).reverse();
+    currentValue = parseFloat(tempCurrency.pop())
 
-  let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
-    if (el) {
-      return el["1. open"];
-    }
-  }).reverse();
-  lastOpenValue = parseFloat(tempDataInd.pop());
-      data = {
+    let tempDataInd = Object.values(currency["Time Series FX (Daily)"]).map((el) => {
+      if (el) {
+        return el["1. open"];
+      }
+    }).reverse();
+    lastOpenValue = parseFloat(tempDataInd.pop());
+    data = {
       labels: Object.keys(currency["Time Series FX (Daily)"]).reverse(),
       datasets: [
         {
@@ -78,13 +75,13 @@ if (currency) {
 
   return (
     <>
-      
+
       <div>
-  <h3 className={classes.percent}>&#36;
+        <h3 className={classes.percent}>&#36;
   {currentValue}
-  {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} /> 
-  : <ArrowDownwardIcon style={{ color: red[500]}} />}
-  </h3>
+          {lastOpenValue < currentValue ? <ArrowUpward style={{ color: green[500] }} />
+            : <ArrowDownwardIcon style={{ color: red[500] }} />}
+        </h3>
         <Line data={data} />
       </div>
     </>
