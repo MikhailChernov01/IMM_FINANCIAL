@@ -44,13 +44,15 @@ const useStyles = makeStyles((theme) => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
+
   formNight: {
+   width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
     "& > *": {           
       color: 'white',
      },
+     
     
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -94,7 +96,7 @@ const SignIn = ({ history }) => {
             noValidate
             method="POST"
           >
-            <TextField
+            <TextField className={magic !== true ? classes.form : classes.formNight}
               onChange={(e) => {
                 getEmail(e.target.value);
               }}
@@ -108,7 +110,7 @@ const SignIn = ({ history }) => {
               autoComplete="email"
               autoFocus
             />
-            <TextField
+            <TextField className={magic !== true ? classes.form : classes.formNight}
               onChange={(e) => {
                 getPassword(e.target.value);
               }}

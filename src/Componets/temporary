@@ -1,0 +1,42 @@
+link: {
+    textDecoration: 'none',
+    fontFamily: [
+      "Roboto", "Helvetica", "Arial", "sans-serif"
+    ].join(','),
+    fontSize: "1.2em",
+    color: '#444444',
+  },
+  linkNight: {
+    textDecoration: 'none',
+    fontFamily: [
+      "Roboto", "Helvetica", "Arial", "sans-serif"
+    ].join(','),
+    fontSize: "1.2em",
+    color: 'white',
+  },
+
+
+  //state for switcher
+  const [night, setNight] = useState(true);
+  
+  function handleChange () {
+    setNight(!true);
+  };
+
+
+
+
+  {magic !== true ? classes.link : classes.linkNight}
+
+
+
+  <Switch
+        checked={night.checkedA}
+        //onChange={handleChange()}
+
+        onChange={() => {handleChange();
+            dispatch(thisAction());
+          }}
+        name="checkedA"
+        // inputProps={{ 'aria-label': 'secondary checkbox' }}
+      />
