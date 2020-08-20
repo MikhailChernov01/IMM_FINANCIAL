@@ -5,7 +5,7 @@ export const loadState = () => {
       return {
         action: { magic: [] },
         fetch: { news: [], stock: [], indicators: [], usd: [], euro: [] , covid:[]},
-        entry: { accounts: [] },
+        entry: { accounts: [], purchase:[] },
       };
     }
     return JSON.parse(serializedState);

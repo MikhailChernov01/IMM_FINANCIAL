@@ -121,8 +121,7 @@ export default function Office() {
                         You: {text} in {moment(date).format("h:mm a")}
                       </pre>
                     </div>
-                    {/* <div className="col-md-2">{user.name}</div> */}
-                    {/* <div className="col-md-2">{text}</div> */}
+                   
                   </div>
                 ))}
               </div>

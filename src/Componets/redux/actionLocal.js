@@ -1,6 +1,8 @@
 import {
   ADD_ACCOUNT,
   SHOW_ACCOUNT,
+  ADD_PURCHASE,
+  DELETE_PURCHASE,
   } from "./actionTypes";
 
 //add ACCOUNT in  club
@@ -71,6 +73,53 @@ export const accountEdit = (id) => {
     console.log(result);
     dispatch({
       type: SHOW_ACCOUNT,
+      payload: result,
+    });
+  };
+};
+
+
+//add purchase
+
+export const purchAdd = (obj) => {
+  return async (dispatch) => {
+    const {stock, count} =obj
+    const resp = await fetch("/purchase", {
+      method: "put",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        stock,
+        count
+      }),
+    });
+    const result = await resp.json();
+    // console.log(result);
+    dispatch({
+      type: ADD_PURCHASE,
+      payload: result,
+    });
+  };
+};
+
+
+//delete purchase
+
+export const purchDelete = (id) => {
+  return async (dispatch) => {
+    const resp = await fetch("/purchase", {
+      method: "delete",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+      }),
+    });
+    const result = await resp.json();
+    dispatch({
+      type: DELETE_PURCHASE,
       payload: result,
     });
   };
