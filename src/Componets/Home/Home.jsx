@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   title: {
-    fontSize: '10px'
+    fontSize: "10px",
   },
-  news:{
-    fontSize: '8px'
-  }
+  news: {
+    fontSize: "8px",
+  },
 }));
 
 const Accordion = withStyles({
@@ -70,7 +70,6 @@ const AccordionSummary = withStyles({
 const AccordionDetails = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-    
   },
 }))(MuiAccordionDetails);
 
@@ -95,7 +94,7 @@ function Home() {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6}>
             {news &&
-              news.articles.map((elem, i) => 
+              news.articles.map((elem, i) => (
                 <>
                   <Accordion
                     square
@@ -106,16 +105,20 @@ function Home() {
                       aria-controls="panel1d-content"
                       id="panel1d-header"
                     >
-                      <Typography className={classes.title}>{elem.title}</Typography>
+                      <Typography className={classes.title}>
+                        {elem.title}
+                      </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className={classes.news} key={i}>{elem.content}</Typography>
+                      <Typography className={classes.news} key={i}>
+                        {elem.content}
+                      </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  </>
-              )}
+                </>
+              ))}
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={3}>
             <LineChart />
           </Grid>
         </Grid>
