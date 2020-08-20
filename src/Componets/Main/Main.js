@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Auth';
-import BackVideo from '../SignIn/Video';
+import BackVideo from '../BackVideo/Video';
 import VideoMain from '../VideoMain/VideoMain';
 
 function Main() {

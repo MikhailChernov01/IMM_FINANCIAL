@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { useInputs } from './useInputs';
 import { withRouter } from 'react-router';
 import app from '../../firebase/firebase';
-import { firestore } from 'firebase';
+import { db } from '../../firebase/firebase';
 
 function Copyright() {
   return (
@@ -63,7 +63,7 @@ const SignUp = ({ history }) => {
   const { email, password, firstName, lastName } = input;
   const handleSignUp = useCallback(
     async (event) => {
-      const db = firestore();
+      
       event.preventDefault();
       try {
         await app.auth().createUserWithEmailAndPassword(email, password);
