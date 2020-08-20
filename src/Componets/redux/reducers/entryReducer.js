@@ -1,7 +1,14 @@
-import { ADD_ACCOUNT, SHOW_ACCOUNT, DELETE_ACCOUNT, EDIT_ACCOUNT } from "../actionTypes";
+import {
+  ADD_ACCOUNT,
+  SHOW_ACCOUNT,
+  DELETE_ACCOUNT,
+  EDIT_ACCOUNT,
+  DELETE_PURCHASE,
+  ADD_PURCHASE,
+} from "../actionTypes";
 
 // SERVER reducer
-export const entry = (state = { accouts: [] }, action) => {
+export const entry = (state = { accouts: [], purchase: [] }, action) => {
   switch (action.type) {
     case ADD_ACCOUNT:
       return {
@@ -16,14 +23,24 @@ export const entry = (state = { accouts: [] }, action) => {
     case EDIT_ACCOUNT:
       return {
         ...state,
-        accounts:  [...action.payload],
+        accounts: [...action.payload],
       };
-      case SHOW_ACCOUNT:
-        return {
-          ...state,
-          accounts:[...action.payload]
-        }
+    case SHOW_ACCOUNT:
+      return {
+        ...state,
+        accounts: [...action.payload],
+      };
+    case ADD_PURCHASE:
+      return {
+        ...state,
+        purchase: [...action.payload],
+      };
+    case DELETE_PURCHASE:
+      return {
+        ...state,
+        purchase: [...action.payload],
+      };
     default:
-      return state
+      return state;
   }
 };

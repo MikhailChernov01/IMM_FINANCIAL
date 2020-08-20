@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
-import { accountAdd, accountShow, accountDelete } from "../redux/actionLocal";
+import { accountAdd, accountShow, accountDelete, purchDelete } from "../redux/actionLocal";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import Account from "./Account";
@@ -47,17 +47,21 @@ const useStyles = makeStyles({
     color: "green",
     textDecoration: "none",
   },
+  purchase: {
+    fontSize: "14px",
+  },
 });
 
 export default function Club() {
   const dispatch = useDispatch();
   const account = useSelector((state) => state.entry.accounts);
+  const purchase = useSelector((state) => state.entry.purchase);
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
   useEffect(() => {
     dispatch(accountShow());
   }, [dispatch]);
-
+  // console.log(purchase);
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} sm={3}>
@@ -89,6 +93,28 @@ export default function Club() {
               <Link to={`/club/${e.title}`} className={classes.link} key={i}>
                 <Typography>{e.title}</Typography>
               </Link>
+            </>
+          ))}
+      </Grid>
+      <Grid item xs={12} sm={3}>
+        <Typography>Purchases:</Typography>
+        <br />
+        {purchase &&
+          purchase.map((e, i) => (
+            <>
+              <Typography className={classes.purchase}>
+                name: {e.stock} count: {e.count}
+              </Typography>
+              <Button
+              onClick={()=>{
+                dispatch(purchDelete(e._id))
+              }
+              
+              }
+              >
+                {" "}
+                Delete
+              </Button>
             </>
           ))}
       </Grid>

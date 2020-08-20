@@ -8,7 +8,7 @@ const purchase = new Schema ({
     required: true,
     unique: true
   },
-  price: {
+  count: {
     type: Number
   },
   account: {
