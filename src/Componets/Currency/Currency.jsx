@@ -15,7 +15,16 @@ function Currency() {
       fontFamily: [
         "Roboto", "Helvetica", "Arial", "sans-serif"
       ].join(','),
+      padding: '10em',
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'center'
       
+    },
+    currCard: {
+      margin: '0',
+      width: "100%",
+      padding: '100px'
     }
 
   });
@@ -25,26 +34,26 @@ function Currency() {
   const dispatch = useDispatch();
   const euro = useSelector((state) => state.fetch.euro[0]);  
 
-  useEffect(() => {
-    if (!euro) {
-      console.log('>>>Euro has request')
-      dispatch(addEuro());
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (!euro) {
+  //     console.log('>>>Euro has request')
+  //     dispatch(addEuro());
+  //   }
+  // }, [dispatch]);
 
   const dollar = useSelector((state) => state.fetch.usd[0]);
 
-  useEffect(() => {
-    if (!dollar) {
-      console.log('>>>>>>Dollar has request')
-      dispatch(addCurrency());
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   if (!dollar) {
+  //     console.log('>>>>>>Dollar has request')
+  //     dispatch(addCurrency());
+  //   }
+  // }, [dispatch]);
 
   return (
-    <Grid className={classes.tables} container spacing={2}>
+    <Grid className={classes.tables} container spacing={5}>
 
-      <Grid item xs={12} sm={6}>
+      <Grid className={classes.currCard} item xs={12} sm={6}>
         <Card >
           <CardContent >
             <LineCurrency />
@@ -52,7 +61,7 @@ function Currency() {
         </Card>
       </Grid>
 
-      <Grid item xs={12} sm={6}>
+      <Grid className={classes.currCard} item xs={12} sm={6}>
         <Card >
           <CardContent >
             <LineChartEuro />
