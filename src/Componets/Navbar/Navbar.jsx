@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
   moon: {
     display: 'inline-block',
-    width: '60px', /* ширина переключателя */
+    width: '50px', /* ширина переключателя */
     height: '24px', /* высота переключателя */
     borderRadius: '12px', /* радиус скругления */    
     zIndex: 0,
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer',
     position: 'relative',
     transitionDuration: '300ms', /* анимация */
-    background: '#434343',
+    background: '#666666',
     boxShadow: 'inset 0 0 10px 0 #999999', /* тень */
     
   },
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sun:{
     display: 'inline-block',
-    width: '54px', /* ширина переключателя */
+    width: '55px', /* ширина переключателя */
     height: '24px', /* высота переключателя */
     borderRadius: '12px', /* радиус скругления */ 
     zIndex: 0,
@@ -116,7 +116,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '50%',
     background: 'radial-gradient(circle, rgba(239,255,38,1) 0%, rgba(255,171,0,1) 100%);',
     top: '4px',
-    left: '3px',
+    left: '4px',
     transitionDuration: '300ms',
   }
 
@@ -173,11 +173,7 @@ export default function SimpleBottomNavigation() {
             <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Forum</ListItemIcon>
           </ListItem>
         </Link>
-        <Link to="/application" className={classes.link}>
-          <ListItem button>
-            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Apps</ListItemIcon>
-          </ListItem>
-        </Link>
+        
         <Link to="/strategy" className={classes.link}>
           <ListItem button>
             <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Strategies</ListItemIcon>
