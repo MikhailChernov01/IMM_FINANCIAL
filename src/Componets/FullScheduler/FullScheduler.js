@@ -6,6 +6,7 @@ import { useInputsDelete } from './useInputs';
 import { useInputsEdit } from './useInputs';
 import app from '../../firebase/firebase';
 import { AuthContext } from '../../Auth';
+import '../FullScheduler/FullScheduler.css';
 
 function FullScheduler() {
   const [arrList, setArrList] = useState('');
@@ -129,11 +130,12 @@ function FullScheduler() {
     [inputEdit.title, inputEdit.start, inputEdit.end]
   );
 
-  console.log(editId);
-
+ 
   return (
     <>
-      <h1 style={{}}>Your FullCalendar for work </h1>
+    
+      <h1 className="header">Your Business Calendar for every day </h1>
+    <br/>
       <form method="POST" onSubmit={handleSubmitAdd}>
         <input
           type="date"
@@ -154,7 +156,7 @@ function FullScheduler() {
           value={input.title}
           placeholder="Your event"
         />
-        <button type="submit">Add event</button>
+        <button className="button15" type="submit">Add event</button>
       </form>
 
       <br />
@@ -178,7 +180,7 @@ function FullScheduler() {
           value={inputEdit.title}
           placeholder="Your event"
         />
-        <button type="submit">Edit event</button>
+        <button type="submit" className="button15">Edit event</button>
       </form>
       <br />
       <form method="POST" onSubmit={handleSubmitDelete}>
@@ -195,7 +197,7 @@ function FullScheduler() {
           value={inputDelete.title}
           placeholder="Your event"
         />
-        <button type="submit">Delete event</button>
+        <button type="submit" className="button15">Delete event</button>
       </form>
 
       <br />

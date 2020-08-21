@@ -238,7 +238,7 @@ export default function SimpleBottomNavigation() {
         </Link>
         <Link to="/currency" className={classes.link}>
           <ListItem button>
-            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Forien exchange market</ListItemIcon>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Foreign exchange market</ListItemIcon>
           </ListItem>
         </Link>
         <Link to="/forum" className={classes.link}>
