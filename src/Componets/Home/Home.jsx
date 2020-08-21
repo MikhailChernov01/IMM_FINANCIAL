@@ -8,20 +8,22 @@ import { newsAdd } from "../redux/action";
 import {} from "dotenv/config";
 import LineChart from "../Chart/Line";
 import SchedulerChart from "../Scheduler/Scheduler";
-
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import Avatar from "@material-ui/core/Avatar";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
     color: "#414141",
-    fontFamily: [
-      "Roboto", "Helvetica", "Arial", "sans-serif"
-    ].join(','),
+    fontFamily: ["Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
   },
   root: {
     width: "auto",
-    padding: '0 5%',
+    padding: "0 5%",
     "& > *": {
       // margin: theme.spacing(1),
     },
@@ -31,10 +33,18 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "black",
   },
   title: {
-    fontSize: '20px'
+    fontSize: "20px",
   },
-  news:{
-    fontSize: '18px'
+  news: {
+    fontSize: "18px",
+  },
+  card: {
+    background: "none",
+    // justifyContent: "center",
+    // justifyItems: "center",
+  },
+  avatar: {
+    background:'#0077b6'
   }
 }));
 
@@ -86,7 +96,6 @@ function Home() {
   const [expanded, setExpanded] = useState(0);
 
   console.log(news);
-  
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -101,6 +110,10 @@ function Home() {
       <div className={classes.root}>
         <h1 className={classes.paper}>Business news</h1>
         <Grid container spacing={3}>
+              {/* <Grid item xs={12} sm={3}></Grid>
+          <Grid item xs={12} sm={3}>
+          </Grid>
+          <Grid item xs={12} sm={3}></Grid> */}
           <Grid item xs={12} sm={6}>
             {news &&
               news.articles.map((elem, i) => (
@@ -119,16 +132,47 @@ function Home() {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className={classes.news} key={i}>{elem.description}<br/><a href={elem.url}>Read more</a></Typography>
-                      
+                      <Typography className={classes.news} key={i}>
+                        {elem.description}
+                        <br />
+                        <a href={elem.url}>Read more</a>
+                      </Typography>
                     </AccordionDetails>
                   </Accordion>
                 </>
               ))}
           </Grid>
           <Grid item xs={12} sm={6}>
+            <Card className={classes.card}>
+              <CardHeader
+                avatar={
+                  <Avatar aria-label="recipe" className={classes.avatar}>
+                    E
+                  </Avatar>
+                }
+                title="The BEST Graduates"
+                subheader="August 21, 2020"
+              />
+              <img
+                src={require("../BackVideo/Image/photo_2020-08-21_12-54-47.jpg")}
+                alt="COOL BOYS"
+                style={{
+                  width: "800px",
+                  height: "600px",
+                  justifyItems: "center",
+                  marginLeft:'5%'
+                }}
+              />
+
+              <CardContent>
+                <Typography variant="body2" component="p">
+                  This guys
+                </Typography>
+              </CardContent>
+            </Card>
             <LineChart />
           </Grid>
+          
         </Grid>
       </div>
     </>
