@@ -49,13 +49,10 @@ const Rotate = styled.div`
   display: inline-block;
   animation: ${rotate} 5s linear infinite;
   padding: 2rem 1rem;
-  font-size: 1.2rem;
-  text-shadow: 2px 0 0px #800040, 3px 2px 0px rgba(77, 0, 38, 0.5),
-    3px 0 3px #ff002b, 5px 0 3px #800015, 6px 2px 3px rgba(77, 0, 13, 0.5),
-    6px 0 9px #ff5500, 8px 0 9px #802a00, 9px 2px 9px rgba(77, 25, 0, 0.5),
-    9px 0 18px #ffd500, 11px 0 18px #806a00, 12px 2px 18px rgba(77, 66, 0, 0.5),
-    12px 0 30px #d4ff00, 14px 0 30px #6a8000, 15px 2px 30px rgba(64, 77, 0, 0.5),
-    15px 0 45px #80ff00, 17px 0 45px #408000, 2px 2px 2px rgba(206, 89, 55, 0);
+  font-size: 2rem;
+  color: #FFFFFF;
+
+text-shadow: 2px 2px 0 #4074b5, 2px -2px 0 #4074b5, -2px 2px 0 #4074b5, -2px -2px 0 #4074b5, 2px 0px 0 #4074b5, 0px 2px 0 #4074b5, -2px 0px 0 #4074b5, 0px -2px 0 #4074b5;
 `;
 
 const ReversedButton = (props) => (

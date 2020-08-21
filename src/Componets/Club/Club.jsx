@@ -1,6 +1,11 @@
 import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
-import { accountAdd, accountShow, accountDelete, purchDelete } from "../redux/actionLocal";
+import {
+  accountAdd,
+  accountShow,
+  accountDelete,
+  purchDelete,
+} from "../redux/actionLocal";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route, Link } from "react-router-dom";
 import Account from "./Account";
@@ -20,6 +25,10 @@ const Button = styled.button`
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18,
     0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
   font-family: "Roboto Condensed", sans-serif;
+  margin: 0;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 0;
 `;
 
 const Typography = styled.h2`
@@ -98,25 +107,25 @@ export default function Club() {
       </Grid>
       <Grid item xs={12} sm={3}>
         <Typography>Purchases:</Typography>
-        <br />
-        {purchase &&
-          purchase.map((e, i) => (
-            <>
-              <Typography className={classes.purchase}>
-                name: {e.stock} count: {e.count}
-              </Typography>
-              <Button
-              onClick={()=>{
-                dispatch(purchDelete(e._id))
-              }
-              
-              }
-              >
-                {" "}
-                Delete
-              </Button>
-            </>
-          ))}
+        <Grid container direction="row" justify="center" alignItems="center">
+          <br />
+          {purchase &&
+            purchase.map((e, i) => (
+              <>
+                <Typography className={classes.purchase}>
+                  name: {e.stock} count: {e.count}
+                </Typography>
+                <Button
+                  onClick={() => {
+                    dispatch(purchDelete(e._id));
+                  }}
+                >
+                  {" "}
+                  Delete
+                </Button>
+              </>
+            ))}
+        </Grid>
       </Grid>
       <Grid container spacing={3} justify="center">
         <Switch>
