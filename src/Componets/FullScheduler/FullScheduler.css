@@ -40,17 +40,17 @@ input {
   color: rgb(51, 51, 51);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
 }
-h1.header {
+.header {
   margin-left: 35% ;
 }
-h1 {
+h1.header {
   text-shadow:
     1px 1px white,
     2px 2px #777;
   color: #333;
   transition: all 1s;
 }
-h1:hover {
+h1.header:hover {
   text-shadow:
     1px 1px white,
     2px 2px rgb(126, 125, 125);
