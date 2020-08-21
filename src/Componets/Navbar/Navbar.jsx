@@ -183,6 +183,11 @@ export default function SimpleBottomNavigation() {
             <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Strategies</ListItemIcon>
           </ListItem>
         </Link>
+        <Link to="/pif" className={classes.link}>
+          <ListItem button>
+            <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>About Us</ListItemIcon>
+          </ListItem>
+        </Link>
         <Link to="/crisis" className={classes.link}>
           <ListItem button>
             <ListItemIcon className={magic !== true ? classes.link : classes.linkNight}>Crisis 2020</ListItemIcon>
