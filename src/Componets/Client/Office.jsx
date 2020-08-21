@@ -15,13 +15,13 @@ const Button = styled.button`
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #49ff18,
     0 0 30px #49ff18, 0 0 40px #49ff18, 0 0 55px #49ff18, 0 0 75px #49ff18;
   font-family: "Roboto Condensed", sans-serif;
-`;
+  `;
 
-const action = (
-  <Button color="secondary" size="small">
-    lorem ipsum dolorem
-  </Button>
-);
+// const action = (
+//   <Button color="secondary" size="small">
+//     lorem ipsum dolorem
+//   </Button>
+// );
 
 const socket = io("http://localhost:4444", {
   transports: ["websocket", "polling"],
@@ -40,6 +40,13 @@ const useStyles = makeStyles((theme) => ({
     background: "#a0c4ff",
     overflow: "auto",
   },
+  form: {
+    width: "150px",
+  },
+  btn: {
+    height: '40px',
+    width:'23%'
+  }
 }));
 
 export default function Office() {
@@ -110,32 +117,35 @@ export default function Office() {
             <div className="col-md-12 mt-4 mb-4">
               <h6>Hello, can I help you</h6>
             </div>
-          </div>
-          <div className="row">
             <div className="col-md-8">
               <div id="messages" className={classes.scroll}>
                 {messages.map(({ user, date, text }, index) => (
                   <div key={index} className="row mb-2">
                     <div className="col-md-3">
                       <pre>
-                        You: {text} in {moment(date).format("h:mm a")}
+                      Thanks for you appeal, we don't 
+                      </pre>
+                      <pre>
+                      work after 05-00 pm
+                      </pre>
+                      <pre>
+                         {moment(date).format("h:mm a")}
                       </pre>
                     </div>
-                   
                   </div>
                 ))}
               </div>
-              <form onSubmit={submit} id="form">
+              <form onSubmit={submit} id="form" >
                 <div className="input-group">
                   <input
                     type="text"
-                    className="form-control"
+                    className={classes.form}
                     onChange={(e) => setMessage(e.target.value)}
                     value={message}
                     id="text"
                   />
                   <span className="input-group-btn">
-                    <Button id="submit" type="submit" className>
+                    <Button id="submit" type="submit" className={classes.btn}>
                       Send
                     </Button>
                   </span>
