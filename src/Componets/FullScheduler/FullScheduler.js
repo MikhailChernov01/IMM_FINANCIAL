@@ -61,15 +61,18 @@ function FullScheduler() {
       event.preventDefault();
 
       const current = app.auth().currentUser;
-
-      if (current != null) {
-        let uid = current.uid;
-        app
-          .database()
-          .ref(`Users/` + uid)
-          .push({ title: title, start: start, end: end });
+      if (title === '' || start === '' || end === '') {
+        alert('Add information');
       } else {
-        console.log('fffoooooo');
+        if (current != null) {
+          let uid = current.uid;
+          app
+            .database()
+            .ref(`Users/` + uid)
+            .push({ title: title, start: start, end: end });
+        } else {
+          console.log('fffoooooo');
+        }
       }
     },
     [title, start, end]
@@ -81,20 +84,29 @@ function FullScheduler() {
       event.preventDefault();
       const current = app.auth().currentUser;
 
-      if (current != null) {
-        arrDelete.forEach((el) => {
-          if (el.start === inputDelete.start && editId !=='' ) {
-            id = editId;
-          } else {
-            if (el.start === inputDelete.start) {
-              id = el.item;
+      if (editId === '') {
+        alert('Click an event and choose a date');
+      } else {
+        if (current != null) {
+          arrDelete.forEach((el) => {
+            if (el.start !== inputDelete.start && editId !== el.item) {
+              // alert('Choose a right date');
+              console.log('nooooo');
+              
             } else {
-              id = editId;
+              if (el.start === inputDelete.start && editId !== '') {
+                id = editId;
+              } else {
+                if (el.start === inputDelete.start) {
+                  id = el.item;
+                } else {
+                  id = editId;
+                }
+              }
             }
-          }
-        });
+          });
+        }
 
-        // console.log(id);
         let uid = current.uid;
         app
           .database()
@@ -110,32 +122,38 @@ function FullScheduler() {
     (event) => {
       event.preventDefault();
       const current = app.auth().currentUser;
+      if (
+        inputEdit.title === '' ||
+        inputEdit.start === '' ||
+        inputEdit.end === ''
+      ) {
+        console.log('Fuck');
+        
+      } else {
+        if (current != null) {
+          // console.log(editId);
+          // console.log(inputEdit.title);
 
-      if (current != null) {
-        // console.log(editId);
-        // console.log(inputEdit.title);
-
-        let uid = current.uid;
-        app
-          .database()
-          .ref(`Users/` + uid)
-          .child(editId)
-          .update({
-            title: inputEdit.title,
-            start: inputEdit.start,
-            end: inputEdit.end,
-          });
+          let uid = current.uid;
+          app
+            .database()
+            .ref(`Users/` + uid)
+            .child(editId)
+            .update({
+              title: inputEdit.title,
+              start: inputEdit.start,
+              end: inputEdit.end,
+            });
+        }
       }
     },
     [inputEdit.title, inputEdit.start, inputEdit.end]
   );
 
- 
   return (
     <>
-    
       <h1 className="header">Your Business Calendar for every day </h1>
-    <br/>
+      <br />
       <form method="POST" onSubmit={handleSubmitAdd}>
         <input
           type="date"
@@ -156,7 +174,9 @@ function FullScheduler() {
           value={input.title}
           placeholder="Your event"
         />
-        <button className="button15" type="submit">Add event</button>
+        <button className="button15" type="submit">
+          Add event
+        </button>
       </form>
 
       <br />
@@ -180,7 +200,9 @@ function FullScheduler() {
           value={inputEdit.title}
           placeholder="Your event"
         />
-        <button type="submit" className="button15">Edit event</button>
+        <button type="submit" className="button15">
+          Edit event
+        </button>
       </form>
       <br />
       <form method="POST" onSubmit={handleSubmitDelete}>
@@ -197,7 +219,9 @@ function FullScheduler() {
           value={inputDelete.title}
           placeholder="Your event"
         />
-        <button type="submit" className="button15">Delete event</button>
+        <button type="submit" className="button15">
+          Delete event
+        </button>
       </form>
 
       <br />
