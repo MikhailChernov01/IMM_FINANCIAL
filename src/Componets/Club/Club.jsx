@@ -42,6 +42,8 @@ const useStyles = makeStyles({
   root: {
     justifyContent: "center",
     justifyItems: "center",
+
+    boxShadow: "none",
   },
   bullet: {
     display: "inline-block",
@@ -59,6 +61,9 @@ const useStyles = makeStyles({
   purchase: {
     fontSize: "14px",
   },
+  card: {
+    background: "none",
+  },
 });
 
 export default function Club() {
@@ -74,11 +79,12 @@ export default function Club() {
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} sm={3}>
-        <Card>
+        <Typography>
+          {bull}Open account{bull}
+        </Typography>
+        <Card className={classes.card}>
           <CardContent className={classes.root}>
-            <Typography>
-              {bull}Open account{bull}
-            </Typography>
+            <Grid></Grid>
           </CardContent>
           <CardActions className={classes.root}>
             <Button onClick={() => dispatch(accountAdd())}>Open</Button>
