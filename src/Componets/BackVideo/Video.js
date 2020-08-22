@@ -3,10 +3,10 @@ import '../SignIn/SignIn.css';
 import BackgroundVideo from '../BackVideo/Video/background.mp4';
 import { AuthContext } from '../../Auth';
 
-function BackVideo(props) {
+function BackVideo() {
   const { currentUser } = useContext(AuthContext);
 
-  // console.log(currentUser);
+ 
   
 
   return (

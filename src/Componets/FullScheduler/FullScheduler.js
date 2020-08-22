@@ -92,7 +92,6 @@ function FullScheduler() {
             if (el.start !== inputDelete.start && editId !== el.item) {
               // alert('Choose a right date');
               console.log('nooooo');
-              
             } else {
               if (el.start === inputDelete.start && editId !== '') {
                 id = editId;
@@ -113,6 +112,8 @@ function FullScheduler() {
           .ref(`Users/` + uid)
           .child(id)
           .remove();
+        id = '';
+        setEditId('');
       }
     },
     [arrDelete, inputDelete.start, inputDelete.title, editId]
@@ -122,30 +123,32 @@ function FullScheduler() {
     (event) => {
       event.preventDefault();
       const current = app.auth().currentUser;
-      if (
-        inputEdit.title === '' ||
-        inputEdit.start === '' ||
-        inputEdit.end === ''
-      ) {
-        console.log('Fuck');
-        
-      } else {
-        if (current != null) {
-          // console.log(editId);
-          // console.log(inputEdit.title);
+      try {
+        if (
+          inputEdit.title === '' ||
+          inputEdit.start === '' ||
+          inputEdit.end === ''
+        ) {
+          console.log('Fuck');
+        } else {
+          if (current != null) {
+            // console.log(editId);
+            // console.log(inputEdit.title);
 
-          let uid = current.uid;
-          app
-            .database()
-            .ref(`Users/` + uid)
-            .child(editId)
-            .update({
-              title: inputEdit.title,
-              start: inputEdit.start,
-              end: inputEdit.end,
-            });
+            let uid = current.uid;
+            app
+              .database()
+              .ref(`Users/` + uid)
+              .child(editId)
+              .update({
+                title: inputEdit.title,
+                start: inputEdit.start,
+                end: inputEdit.end,
+              });
+            setEditId('');
+          }
         }
-      }
+      } catch (error) {}
     },
     [inputEdit.title, inputEdit.start, inputEdit.end]
   );
