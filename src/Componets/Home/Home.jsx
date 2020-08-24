@@ -44,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
     // justifyItems: "center",
   },
   avatar: {
-    background:'#0077b6'
-  }
+    background: "#0077b6",
+  },
 }));
 
 const Accordion = withStyles({
@@ -110,10 +110,6 @@ function Home() {
       <div className={classes.root}>
         <h1 className={classes.paper}>Business news</h1>
         <Grid container spacing={3}>
-              {/* <Grid item xs={12} sm={3}></Grid>
-          <Grid item xs={12} sm={3}>
-          </Grid>
-          <Grid item xs={12} sm={3}></Grid> */}
           <Grid item xs={12} sm={6}>
             {news &&
               news.articles.map((elem, i) => (
@@ -160,19 +156,25 @@ function Home() {
                   width: "800px",
                   height: "600px",
                   justifyItems: "center",
-                  marginLeft:'5%'
+                  marginLeft: "5%",
                 }}
               />
 
               <CardContent>
-                <Typography variant="body2" component="p">
-                  This guys
+                <Typography variant="h5" component="p">
+                  You’re on your way to seek new vistas, dream new dreams,
+                  embark on who you are. Remember to embrace life with passion
+                  and keep reaching for the stars. Before you act, listen.
+                  Before you react, think. Before you criticize, wait. And,
+                  before you quit, try. Know what makes your graduation extra
+                  special? It’s having watched you grow up, sharing amazing
+                  memories with you, and knowing all the challenges you’ve
+                  worked through to get to this day. You did it, guys.
                 </Typography>
               </CardContent>
             </Card>
             <LineChart />
           </Grid>
-          
         </Grid>
       </div>
     </>
