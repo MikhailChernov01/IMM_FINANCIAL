@@ -34,12 +34,12 @@ NODE_DB_MONGO = YOU_LOCAL_MONGO_DB<br>
 NODE_ENV_PORT = 4444<br>
 
 <h2 style='color:green'>Features</h2>
-<h3>News apdate</h3>
+<h3>News update</h3>
 
 ![](readme-images/news.png)
 
 
-<h3>User authentication and authorization via Firebase</h3>
+<h3>User Authentication and Authorization via Firebase</h3>
 
 ![](readme-images/sign-in.png)
 
@@ -54,7 +54,7 @@ NODE_ENV_PORT = 4444<br>
 ![](readme-images/line.png)
 
 
-<h3>User' account Event planner</h3>
+<h3>User' Account Event Planner</h3>
 
 ![](readme-images/planner.png)
 
