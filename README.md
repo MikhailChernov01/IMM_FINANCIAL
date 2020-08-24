@@ -33,4 +33,22 @@ If you need watch PRIVATE OFFICE, add in .env this:<br>
 NODE_DB_MONGO = YOU_LOCAL_MONGO_DB<br>
 NODE_ENV_PORT = 4444<br>
 
+<h2 style='color:green'>Features</h2>
+
+![]()
+News apdate
+
+![]()
+Stock market line charts with dayly update
+
+![]()
+User authentication and authorization via Firebase
+
 ![](readme-images/TRIMVIDEO%20(2).gif)
+Light- Dark Theme Switcher
+
+![]()
+Forex line Charts
+
+![]()
+Uuser' account Event planner
