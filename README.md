@@ -32,3 +32,5 @@ If you need watch PRIVATE OFFICE, add in .env this:<br>
 
 NODE_DB_MONGO = YOU_LOCAL_MONGO_DB<br>
 NODE_ENV_PORT = 4444<br>
+
+![](readme-images/TRIMVIDEO (2).gif)
