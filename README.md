@@ -36,22 +36,22 @@ NODE_ENV_PORT = 4444<br>
 <h2 style='color:green'>Features</h2>
 
 ![](readme-images/news.png)
-1. News apdate
-
-![]()
-2. Stock market line charts with dayly update
-
+<br>
+News apdate
+<br>
 ![](readme-images/sign-in.png)
-3. User authentication and authorization via Firebase
-
+<br>
+ User authentication and authorization via Firebase
+<br>
 ![](readme-images/TRIMVIDEO%20(2).gif)
-4. Light- Dark Theme Switcher
-
+<br>
+Light- Dark Theme Switcher
+<br>
 ![](readme-images/line.png)
-5. Forex line Charts
-
+<br>
+Forex line Charts
+<br>
 ![](readme-images/planner.png)
-6. User' account Event planner
+<br>
+User' account Event planner
 
-![](readme-images/covid.png)
-7. Covid stats
