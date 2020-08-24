@@ -51,4 +51,7 @@ Light- Dark Theme Switcher
 Forex line Charts
 
 ![]()
-Uuser' account Event planner
+User' account Event planner
+
+![]()
+Covid stats
