@@ -35,22 +35,27 @@ NODE_ENV_PORT = 4444<br>
 
 <h2 style='color:green'>Features</h2>
 <h3>News apdate</h3>
+
 ![](readme-images/news.png)
 
 
 <h3>User authentication and authorization via Firebase</h3>
+
 ![](readme-images/sign-in.png)
 
  
 <h3>Light- Dark Theme Switcher</h3>
+
 ![](readme-images/TRIMVIDEO%20(2).gif)
 
 
 <h3>Forex line Charts</h3>
+
 ![](readme-images/line.png)
 
 
 <h3>User' account Event planner</h3>
+
 ![](readme-images/planner.png)
 
 
