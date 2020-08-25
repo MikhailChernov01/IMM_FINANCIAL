@@ -30,6 +30,15 @@ All applications will work with this data except for the PRIVATE OFFICE.
 
 If you need watch PRIVATE OFFICE, add in .env this:<br>
 
+On command line, type in the following commands:
+
+        npm install        
+        npm start  
+ or:
+        
+        yarn install        
+        yarn start 
+
 NODE_DB_MONGO = YOU_LOCAL_MONGO_DB<br>
 NODE_ENV_PORT = 4444<br>
 
